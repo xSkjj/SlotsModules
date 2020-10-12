@@ -1,25 +1,15 @@
 import tkinter as tk
+import config as cfg
 
-# window settings
-icon = r".\assets\icon.ico" # icon in the top left corner
-title = "Slots"             # Title at the top of the window
-minWidth = 400              # minimum width you can resize the window to
-minHeight = 255             # minimum height you can resize the window to
-maxWidth = 400              # maximum width you can resize the window to
-maxHeight = 255             # maximum height you can resize the window to
-windowWidth = "400"         # the width of the window when starting
-windowHeight = "255"        # the height of the window when starting
-offsetx = "200"             # distance between the window's and screen's left edge
-offsety = "200"             # distance between the window's and screen's top edge
-bgColor = "#202020"         # background color of the window
+bgColor = cfg.bgColor
 
 # apply window settings
 root = tk.Tk()
-root.iconbitmap(icon)
-root.title(title)
-root.minsize(minWidth, minHeight)
-root.maxsize(maxWidth, maxHeight)
-root.geometry((windowWidth + "x" + windowHeight + "+" + offsetx + "+" + offsety))
+root.iconbitmap(cfg.icon)
+root.title(cfg.title)
+root.minsize(cfg.minWidth, cfg.minHeight)
+root.maxsize(cfg.maxWidth, cfg.maxHeight)
+root.geometry((cfg.windowWidth + "x" + cfg.windowHeight + "+" + cfg.offsetx + "+" + cfg.offsety))
 root["background"] = bgColor
 
 
