@@ -1,4 +1,4 @@
-from modules import gui
+from modules import gui, spin
 
 # display the elements
 gui.header.pack()

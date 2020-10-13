@@ -101,7 +101,7 @@ spinBtn = tk.Button(userInputs,
                     relief = "flat")
 
 balLabel = tk.Label(root,
-                    text = "",
+                    text = "Balance: 1000",
                     font = "Arial 10 bold",
                     fg   = "gold",
                     bg   = bgColor)
