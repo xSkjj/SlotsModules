@@ -1,19 +1,23 @@
-from modules import validate
+from random import randint
 
-def slots(amt):
-    if amt > bal:
+bal = 1000
+
+def trySpin(amt):
+    if not isValidNum(amt):
         amtInput["bg"] = "#b00000"
-        output["text"] = "You don't have enough credits."
-        return
+        output["text"] = "Amount is not a valid number"
+    elif int(amt) > bal:
+        amtInput["bg"] = "#b00000"
+        output["text"] = "You don't have enough credits"
+    else:
+        go(int(amt))
 
-    # slots stuff or something
+
+def go(amt):
+    symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "$", "%", "&", "?", "#"]
     output["text"] = "spinning..."
 
-    from random import randint
-
-    symbols = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "!", "$", "%", "&", "?", "#"]
-
-    spinBtn["state"] = "disabled"
+    spinBtn["state"] = "disabled" # lock spin button
     spinBtn.update()
 
     bal -= amt
@@ -56,4 +60,4 @@ def slots(amt):
     balLabel["text"] = f"Balance: {bal}"
 
     spinBtn.update()
-    spinBtn["state"] = "normal"
+    spinBtn["state"] = "normal" # unlock spin button
