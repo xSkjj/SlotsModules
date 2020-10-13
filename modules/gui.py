@@ -1,6 +1,5 @@
 import tkinter as tk
 
-
 # window settings
 icon = r".\assets\icon.ico" # window icon
 title = "Slots"             # window title
@@ -16,13 +15,12 @@ bgColor = "#202020"         # window background color
 
 # apply window settings
 root = tk.Tk()
-root.iconbitmap(cfg.icon)
-root.title(cfg.title)
-root.minsize(cfg.minWidth, cfg.minHeight)
-root.maxsize(cfg.maxWidth, cfg.maxHeight)
-root.geometry((cfg.windowWidth + "x" + cfg.windowHeight + "+" + cfg.offsetx + "+" + cfg.offsety))
+root.iconbitmap(icon)
+root.title(title)
+root.minsize(minWidth, minHeight)
+root.maxsize(maxWidth, maxHeight)
+root.geometry((windowWidth + "x" + windowHeight + "+" + offsetx + "+" + offsety))
 root["background"] = bgColor
-
 
 # make elements and set their properties
 header = tk.Label(root,
@@ -65,7 +63,7 @@ amtInput = tk.Entry(userInputs,
                     relief           = "flat")
 
 spinBtn = tk.Button(userInputs,
-                    command = trySpin,
+                    command = None,
                     text    = "spin",
                     font    = "Arial 10 bold",
                     fg      = "#050",
@@ -73,7 +71,7 @@ spinBtn = tk.Button(userInputs,
                     relief  = "flat")
 
 balLabel = tk.Label(root,
-                    text = f"Balance: {bal}",
+                    text = "Balance: ",
                     font = "Arial 10 bold",
                     fg   = "gold",
                     bg   = bgColor)
