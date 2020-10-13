@@ -1,18 +1,4 @@
 import tkinter as tk
-import config as cfg
-
-bgColor = cfg.bgColor
-
-# apply window settings
-root = tk.Tk()
-root.iconbitmap(cfg.icon)
-root.title(cfg.title)
-root.minsize(cfg.minWidth, cfg.minHeight)
-root.maxsize(cfg.maxWidth, cfg.maxHeight)
-root.geometry((cfg.windowWidth + "x" + cfg.windowHeight + "+" + cfg.offsetx + "+" + cfg.offsety))
-root["background"] = bgColor
-
-
 
 # try to fire the slots function with the given input
 def trySpin():
@@ -92,60 +78,6 @@ def slots(amt):
     spinBtn["state"] = "normal"
 
 
-# make elements and set their properties
-header = tk.Label(root,
-               text = "S  L  O  T  S",
-               font = "Impact 24",
-               fg   = "gold",
-               bg   = bgColor)
-
-slotsDisplay = tk.Canvas(root,
-                      width              = 300,
-                      height             = 100,
-                      bg                 = "#c3a469",
-                      highlightthickness = 0)
-slotsDisplay.create_rectangle(0,   0,  99, 99, outline="white")
-slotsDisplay.create_rectangle(100, 0, 199, 99, outline="white")
-slotsDisplay.create_rectangle(200, 0, 299, 99, outline="white")
-slotsDisplay.create_text(50,  50, text="$", font="Consolas 32", fill="white", tags="symA")
-slotsDisplay.create_text(150, 50, text="$", font="Consolas 32", fill="white", tags="symB")
-slotsDisplay.create_text(250, 50, text="$", font="Consolas 32", fill="white", tags="symC")
-
-output = tk.Label(root,
-               text = "How much credits would you like to use?",
-               font = "Arial 10 bold",
-               fg   = "white",
-               bg   = "black")
-
-userInputs = tk.Frame(root,
-                   bg = bgColor)
-
-amtInputLabel = tk.Label(userInputs,
-                      text = "Amount:",
-                      font = "Arial 10 bold",
-                      fg   = "white",
-                      bg   = bgColor)
-
-amtInput = tk.Entry(userInputs,
-                 bg               = "#404040",
-                 insertbackground = "white",
-                 fg               = "white",
-                 relief           = "flat")
-
-spinBtn = tk.Button(userInputs,
-                 command = trySpin,
-                 text    = "spin",
-                 font    = "Arial 10 bold",
-                 fg      = "#050",
-                 bg      = "light green",
-                 relief  = "flat")
-
-balLabel = tk.Label(root,
-                 text = f"Balance: {bal}",
-                 font = "Arial 10 bold",
-                 fg   = "gold",
-                 bg   = bgColor)
-
 # display the elements
 header.pack()
 slotsDisplay.pack(pady=4)
@@ -156,6 +88,3 @@ amtInput.grid     (column=1, row=0, padx=5)
 spinBtn.grid      (column=2, row=0, padx=5)
 amtInput.insert(0, "0")
 balLabel.pack()
-
-
-root.mainloop()
