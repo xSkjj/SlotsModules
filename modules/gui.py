@@ -1,4 +1,5 @@
 import tkinter as tk
+from modules.functions import spin
 
 # window settings
 icon = r".\assets\icon.ico" # window icon
@@ -56,44 +57,15 @@ amtInputLabel = tk.Label(userInputs,
                          fg   = "white",
                          bg   = bgColor)
 
-sub100 = tk.Button(userInputs,
-                   text   = "-100",
-                   font   = "Arial 10 bold",
-                   relief = "flat",
-                   state  = "disabled")
-sub10 = tk.Button(userInputs,
-                  text   = "-10",
-                  font   = "Arial 10 bold",
-                  relief = "flat",
-                  state  = "disabled")
-sub1 = tk.Button(userInputs,
-                 text   = "-1",
-                 font   = "Arial 10 bold",
-                 relief = "flat",
-                 state  = "disabled")
-
-amtInput = tk.Label(userInputs,
+amtInput = tk.Entry(userInputs,
                     text  = 0,
                     fg    = "white",
                     bg    = "#404040",
-                    width = 5)
-
-add1 = tk.Button(userInputs,
-                 text   = "+1",
-                 font   = "Arial 10 bold",
-                 relief = "flat")
-add10 = tk.Button(userInputs,
-                  text   = "+10",
-                  font   = "Arial 10 bold",
-                  relief = "flat")
-add100 = tk.Button(userInputs,
-                   text   = "+100",
-                   font   = "Arial 10 bold",
-                   fg     = "#605000",
-                   bg     = "#fd0",
-                   relief = "flat")
+                    insertbackground="#bee",
+                    relief= "flat")
 
 spinBtn = tk.Button(userInputs,
+                    command= spin.trySpin,
                     text   = "spin",
                     font   = "Arial 10 bold",
                     fg     = "#050",
@@ -101,7 +73,7 @@ spinBtn = tk.Button(userInputs,
                     relief = "flat")
 
 balLabel = tk.Label(root,
-                    text = "Balance: 1000",
+                    text = f"Balance: {spin.bal}",
                     font = "Arial 10 bold",
                     fg   = "gold",
                     bg   = bgColor)
