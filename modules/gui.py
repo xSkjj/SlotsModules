@@ -1,5 +1,5 @@
 import tkinter as tk
-from modules.functions import spin
+from modules import spin
 
 # window settings
 icon = r".\assets\icon.ico" # window icon
