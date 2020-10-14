@@ -1,26 +1,13 @@
 import tkinter as tk
 from modules import spin
 
-# window settings
-icon = r".\assets\icon.ico" # window icon
-title = "Slots"             # window title
-minWidth = 400              # minimum resize width
-minHeight = 255             # minimum resize height
-maxWidth = 400              # maximum resize width
-maxHeight = 255             # maximum resize height
-windowWidth = "400"         # starting width
-windowHeight = "255"        # starting height
-offsetx = "200"             # left border offset
-offsety = "200"             # top border offset
-bgColor = "#202020"         # window background color
+from configparser import ConfigParser
+config = ConfigParser()
+config.read(".\\settings.ini")
+bgColor = config.get("window_settings", "bgColor")
 
-# apply window settings
+
 root = tk.Tk()
-root.iconbitmap(icon)
-root.title(title)
-root.minsize(minWidth, minHeight)
-root.maxsize(maxWidth, maxHeight)
-root.geometry((windowWidth + "x" + windowHeight + "+" + offsetx + "+" + offsety))
 root["background"] = bgColor
 
 # make elements and set their properties
