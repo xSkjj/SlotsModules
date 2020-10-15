@@ -1,13 +1,15 @@
 from random import randint
 from modules import gui
 
+
 bal = 1000
+
+def notValid():
+    gui.amtInput["bg"] = "#b00000"
+    gui.output["text"] = "Amount is not a valid number"
 
 def trySpin():
     amt = gui.amtInput.get()
-    def notValid():
-        gui.amtInput["bg"] = "#b00000"
-        gui.output["text"] = "Amount is not a valid number"
     if amt == "":
         return notValid()
     for char in amt:

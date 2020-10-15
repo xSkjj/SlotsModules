@@ -1,5 +1,6 @@
 from modules import gui
 
+
 # display the elements
 gui.header.pack()
 gui.slotsDisplay.pack(pady=4)

@@ -6,4 +6,6 @@ soothe your gambling addiction without losing any real money
 - and with a settings file which can be modified by an (imaginary) end-user
 - insert more tasks here
 
-This is a school project I am working on right now or something
+This is a school project I am working on right now
+
+I might add more tasks here instead of creating more repositories

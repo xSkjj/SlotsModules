@@ -1,14 +1,17 @@
 import tkinter as tk
-from modules import spin
-
-from configparser import ConfigParser
-config = ConfigParser()
-config.read(".\\settings.ini")
-bgColor = config.get("window_settings", "bgColor")
+from modules import icon, title, minWidth, minHeight, maxWidth, maxHeight, windowWidth,  windowHeight, offsetx, offsety, bgColor, spin
 
 
 root = tk.Tk()
+
+# apply window settings
+root.iconbitmap(icon)
+root.title(title)
+root.minsize(minWidth, minHeight)
+root.maxsize(maxWidth, maxHeight)
+root.geometry((windowWidth + "x" + windowHeight + "+" + offsetx + "+" + offsety))
 root["background"] = bgColor
+
 
 # make elements and set their properties
 header = tk.Label(root,
