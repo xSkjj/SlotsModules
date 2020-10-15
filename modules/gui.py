@@ -33,7 +33,7 @@ slotsDisplay.create_text(150, 50, text="$", font="Consolas 32", fill="white", ta
 slotsDisplay.create_text(250, 50, text="$", font="Consolas 32", fill="white", tags="symC")
 
 output = tk.Label(root,
-                  text = "How much credits would you like to use?",
+                  text = "How many credits would you like to use?",
                   font = "Consolas 10 bold",
                   fg   = "white",
                   bg   = "black")
