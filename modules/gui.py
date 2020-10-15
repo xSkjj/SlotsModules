@@ -1,15 +1,16 @@
 import tkinter as tk
-from modules import icon, title, minWidth, minHeight, maxWidth, maxHeight, windowWidth,  windowHeight, offsetx, offsety, bgColor, spin
+from modules import bgColor, bgSlots, slotFont, slotCols, slotRows, spin
 
 
 root = tk.Tk()
 
+icon = ".\\assets\\icon.ico"
+title = "Slots"
+
 # apply window settings
 root.iconbitmap(icon)
 root.title(title)
-root.minsize(minWidth, minHeight)
-root.maxsize(maxWidth, maxHeight)
-root.geometry((windowWidth + "x" + windowHeight + "+" + offsetx + "+" + offsety))
+root.resizable(False, False)
 root["background"] = bgColor
 
 
@@ -25,12 +26,12 @@ slotsDisplay = tk.Canvas(root,
                          height             = 100,
                          bg                 = "white",
                          highlightthickness = 0)
-slotsDisplay.create_rectangle(1,   1,  98, 98, outline="white", fill="#c3a469")
-slotsDisplay.create_rectangle(101, 1, 198, 98, outline="white", fill="#c3a469")
-slotsDisplay.create_rectangle(201, 1, 298, 98, outline="white", fill="#c3a469")
-slotsDisplay.create_text(50,  50, text="$", font="Consolas 32", fill="white", tags="symA")
-slotsDisplay.create_text(150, 50, text="$", font="Consolas 32", fill="white", tags="symB")
-slotsDisplay.create_text(250, 50, text="$", font="Consolas 32", fill="white", tags="symC")
+slotsDisplay.create_rectangle(1,   1,  98, 98, outline="white", fill=bgSlots)
+slotsDisplay.create_rectangle(101, 1, 198, 98, outline="white", fill=bgSlots)
+slotsDisplay.create_rectangle(201, 1, 298, 98, outline="white", fill=bgSlots)
+slotsDisplay.create_text(50,  50, text="$", font=(slotFont, 48, "bold"), fill="white", tags="symA")
+slotsDisplay.create_text(150, 50, text="$", font=(slotFont, 48, "bold"), fill="white", tags="symB")
+slotsDisplay.create_text(250, 50, text="$", font=(slotFont, 48, "bold"), fill="white", tags="symC")
 
 output = tk.Label(root,
                   text = "How many credits would you like to use?",
@@ -48,11 +49,11 @@ amtInputLabel = tk.Label(userInputs,
                          bg   = bgColor)
 
 amtInput = tk.Entry(userInputs,
-                    text  = 0,
-                    fg    = "white",
-                    bg    = "#404040",
-                    insertbackground="#bee",
-                    relief= "flat")
+                    textvariable     = tk.StringVar(value=0),
+                    fg               = "white",
+                    bg               = "#404040",
+                    insertbackground = "white",
+                    relief           = "flat")
 
 spinBtn = tk.Button(userInputs,
                     command= spin.trySpin,

@@ -3,7 +3,7 @@ from modules import gui
 
 # display the elements
 gui.header.pack()
-gui.slotsDisplay.pack(pady=4)
+gui.slotsDisplay.pack(padx=4, pady=4)
 gui.output.pack(fill='x', padx=8, pady=(24, 4))
 gui.userInputs.pack()
 gui.amtInputLabel.grid(column=0, row=0, padx=5)
