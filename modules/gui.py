@@ -1,5 +1,5 @@
 import tkinter as tk
-from modules import bgColor, bgSlots, slotFont, slotCols, slotRows, spin
+from modules import bgColor, bgSlots, slotFont, slotAmt, spin
 
 
 root = tk.Tk()
@@ -22,16 +22,20 @@ header = tk.Label(root,
                   bg   = bgColor)
 
 slotsDisplay = tk.Canvas(root,
-                         width              = 300,
+                         width              = slotAmt * 100,
                          height             = 100,
                          bg                 = "white",
                          highlightthickness = 0)
-slotsDisplay.create_rectangle(1,   1,  98, 98, outline="white", fill=bgSlots)
-slotsDisplay.create_rectangle(101, 1, 198, 98, outline="white", fill=bgSlots)
-slotsDisplay.create_rectangle(201, 1, 298, 98, outline="white", fill=bgSlots)
-slotsDisplay.create_text(50,  50, text="$", font=(slotFont, 48, "bold"), fill="white", tags="symA")
-slotsDisplay.create_text(150, 50, text="$", font=(slotFont, 48, "bold"), fill="white", tags="symB")
-slotsDisplay.create_text(250, 50, text="$", font=(slotFont, 48, "bold"), fill="white", tags="symC")
+for slot in range(slotAmt):
+    slotsDisplay.create_rectangle(slot*100+1, 1,
+                                  slot*100+98, 98,
+                                  outline = "white",
+                                  fill    = bgSlots)
+    slotsDisplay.create_text(slot*100+50, 50,
+                             text ="$",
+                             font = (slotFont, 48, "bold"),
+                             fill = "white",
+                             tags = f"sym{slot}")
 
 output = tk.Label(root,
                   text = "How many credits would you like to use?",
