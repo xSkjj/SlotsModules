@@ -53,12 +53,12 @@ def go(amt):
             if slotVals.count(i) >= slotAmt / 2:
                 win += 1
         if win > 0:
-            if not win == slotAmt:
-                bal += round(amt * slotAmt / (slotAmt - win))
-                gui.output["text"] = f"You spent {amt} and won {round(amt * slotAmt / (slotAmt - win))} !"
-            else:
+            if win == slotAmt:
                 bal += amt*50
                 gui.output["text"] = f"You spent {amt} and won {amt*50} !!"
+            else:
+                bal += round(amt * slotAmt / (slotAmt - win))
+                gui.output["text"] = f"You spent {amt} and won {round(amt * slotAmt / (slotAmt - win))} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
 
