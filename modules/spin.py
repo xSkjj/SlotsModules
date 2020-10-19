@@ -3,10 +3,23 @@ from modules import slotAmt, bal, gui
 
 
 def notValid():
+    """
+    Tell the user that the Input is not a valid number
+    1. change the text background of the output to a red color
+    2. change the text of the output-Label to get the message across
+    """
     gui.amtInput["bg"] = "#b00000"
     gui.output["text"] = "Amount is not a valid number"
 
 def trySpin():
+    """
+    Check if the user's input is a valid integer number
+    If it isn't valid, run notValid()
+    If it is valid, but greater than the user's balance ->
+      -> 1. change the text background of the output to a red color
+      -> 2. change the text of the output-Label to get the message across
+    If the number doesn't exceed the user's balance, run the function to spin: go()
+    """
     amt = gui.amtInput.get()
     if amt == "":
         return notValid()
