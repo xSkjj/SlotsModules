@@ -35,33 +35,34 @@ def trySpin():
 
 
 def go(amt):
-    global bal
-    bal -= amt
-    symbols = "0123456789!$%&?#"
+    " the "
+    global bal # <- bad
+    bal -= amt # subtract the amount used from th balance
+    symbols = "0123456789!$%&?#" # all possible symbols that can appear
 
     gui.output["text"] = "spinning..."
     gui.spinBtn["state"] = "disabled" # lock spin button
     gui.spinBtn.update()
-    gui.balLabel["text"] = f"Balance: {bal}"
+    gui.balLabel["text"] = f"Balance: {bal}" # update the balance label to display the new balance
     gui.balLabel.update()
 
-    slotIDs = [gui.slotsDisplay.find_withtag(f"sym{i}")[0] for i in range(slotAmt)]
+    slotIDs = [gui.slotsDisplay.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # this or whatever
 
-    for i in range(slotAmt):
+    for i in range(slotAmt): # something, probably
         for rand in range(randint(8, 10)):
             sym = symbols[randint(0, len(symbols)-1)]
-            for id in slotIDs[i:]:
+            for id in slotIDs[i:]: # yeah...
                 gui.slotsDisplay.itemconfigure(id, text=sym)
             gui.slotsDisplay.update_idletasks()
             gui.slotsDisplay.after(100)
 
 
-    slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs]
+    slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs] # get the ... things
     win = 0
-    if slotVals.count(slotVals[0]) == slotAmt:
+    if slotVals.count(slotVals[0]) == slotAmt: # do things with the things, if the things are all the same
         bal += amt*100
         gui.output["text"] = f"You spent {amt} and won {amt*100} !!!"
-    else:
+    else: # when the
         for i in slotVals:
             if slotVals.count(i) >= slotAmt / 2:
                 win += 1
@@ -75,6 +76,6 @@ def go(amt):
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
 
-    gui.balLabel["text"] = f"Balance: {bal}"
+    gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance - It may or may not have changed. It's more common to be the latter
     gui.spinBtn.update()
     gui.spinBtn["state"] = "normal" # unlock spin button
