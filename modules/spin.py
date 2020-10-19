@@ -2,8 +2,6 @@ from random import randint
 from modules import gui
 
 
-bal = 1000
-
 def notValid():
     gui.amtInput["bg"] = "#b00000"
     gui.output["text"] = "Amount is not a valid number"

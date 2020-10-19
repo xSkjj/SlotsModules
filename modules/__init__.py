@@ -11,3 +11,5 @@ slotFont = config.get("customisation", "slots_font")
 
 slotCols = config.getint("game_settings", "slot_columns")
 slotRows = config.getint("game_settings", "slot_rows")
+
+bal = 1000
