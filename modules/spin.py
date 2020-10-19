@@ -1,5 +1,5 @@
 from random import randint
-from modules import slotAmt, bal, gui
+from modules import slotAmt, bal, symbols, gui
 
 
 def notValid():
@@ -36,46 +36,42 @@ def trySpin():
 
 def go(amt):
     " the "
-    global bal # <- bad
-    bal -= amt # subtract the amount used from th balance
-    symbols = "0123456789!$%&?#" # all possible symbols that can appear
-
     gui.output["text"] = "spinning..."
-    gui.spinBtn["state"] = "disabled" # lock spin button
+    gui.spinBtn["state"] = "disabled" # lock the spin button
     gui.spinBtn.update()
-    gui.balLabel["text"] = f"Balance: {bal}" # update the balance label to display the new balance
-    gui.balLabel.update()
 
-    slotIDs = [gui.slotsDisplay.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # this or whatever
+    slotIDs = [gui.slotsDisplay.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
 
-    for i in range(slotAmt): # something, probably
+    for i in range(slotAmt): # iterate <slotAmt> times...
         for rand in range(randint(8, 10)):
-            sym = symbols[randint(0, len(symbols)-1)]
-            for id in slotIDs[i:]: # yeah...
+            for id in slotIDs[i:]:
+                sym = symbols[randint(0, len(symbols)-1)]
                 gui.slotsDisplay.itemconfigure(id, text=sym)
             gui.slotsDisplay.update_idletasks()
             gui.slotsDisplay.after(100)
 
 
-    slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs] # get the ... things
+    global bal # <- bad
+    slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
     win = 0
-    if slotVals.count(slotVals[0]) == slotAmt: # do things with the things, if the things are all the same
-        bal += amt*100
+    if slotVals.count(slotVals[0]) == slotAmt: # if all values are the same, initiate POG MOMENT
+        bal += amt*99
         gui.output["text"] = f"You spent {amt} and won {amt*100} !!!"
-    else: # when the
+    else: # do stuff
         for i in slotVals:
             if slotVals.count(i) >= slotAmt / 2:
                 win += 1
         if win > 0:
             if win == slotAmt:
-                bal += amt*50
+                bal += amt*49
                 gui.output["text"] = f"You spent {amt} and won {amt*50} !!"
             else:
-                bal += round(amt * slotAmt / (slotAmt - win))
+                bal += round(amt * slotAmt / (slotAmt - win) - amt)
                 gui.output["text"] = f"You spent {amt} and won {round(amt * slotAmt / (slotAmt - win))} !"
         else:
+            bal -= amt # subtract the amount used from the balance
             gui.output["text"] = f"You spent {amt} and lost everything."
 
-    gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance - It may or may not have changed. It's more common to be the latter
+    gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
     gui.spinBtn.update()
     gui.spinBtn["state"] = "normal" # unlock spin button

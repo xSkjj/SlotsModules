@@ -1,5 +1,6 @@
 import tkinter as tk
-from modules import bgColor, bgSlots, slotFont, slotAmt, spin
+from random import randint
+from modules import bgColor, bgSlots, slotFont, slotAmt, bal, symbols, spin
 
 
 root = tk.Tk()
@@ -32,7 +33,7 @@ for slot in range(slotAmt):
                                   outline = "white",
                                   fill    = bgSlots)
     slotsDisplay.create_text(slot*100+50, 50,
-                             text ="$",
+                             text = symbols[randint(0, 15)],
                              font = (slotFont, 48, "bold"),
                              fill = "white",
                              tags = f"sym{slot}")
@@ -68,7 +69,7 @@ spinBtn = tk.Button(userInputs,
                     relief = "flat")
 
 balLabel = tk.Label(root,
-                    text = f"Balance: {spin.bal}",
+                    text = f"Balance: {bal}",
                     font = "Arial 10 bold",
                     fg   = "gold",
                     bg   = bgColor)
