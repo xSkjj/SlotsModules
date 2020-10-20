@@ -54,17 +54,17 @@ def go(amt):
     global bal # <- bad
     slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
     win = 0
-    if slotVals.count(slotVals[0]) == slotAmt: # if all values are the same, initiate POG MOMENT
-        bal += amt*99
-        gui.output["text"] = f"You spent {amt} and won {amt*100} !!!"
-    else: # do stuff
+    if slotVals.count(slotVals[0]) == slotAmt: # if all values are the same, JACKPOT
+        bal += amt*11*slotAmt**2
+        gui.output["text"] = f"You spent {amt} and won {amt*11*slotAmt**2+amt} !!!"
+    else:
         for i in slotVals:
             if slotVals.count(i) >= slotAmt / 2:
                 win += 1
         if win > 0 and slotAmt > 2:
             if win == slotAmt:
-                bal += amt*49
-                gui.output["text"] = f"You spent {amt} and won {amt*50} !!"
+                bal += amt*11*slotAmt
+                gui.output["text"] = f"You spent {amt} and won {amt*11*slotAmt+amt} !!"
             else:
                 bal += round(amt * slotAmt / (slotAmt - win) - amt)
                 gui.output["text"] = f"You spent {amt} and won {round(amt * slotAmt / (slotAmt - win))} !"
