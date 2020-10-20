@@ -21,11 +21,15 @@ def trySpin():
     If the number doesn't exceed the user's balance, run the function to spin: go()
     """
     amt = gui.amtInput.get()
-    if amt == "":
+    try:
+        int(amt)
+    except:
         return notValid()
-    for char in amt:
-        if char not in "0123456789":
-            return notValid()
+    #if amt == "":
+        #return notValid()
+    #for char in amt:
+        #if char not in "0123456789":
+            #return notValid()
     if int(amt) > bal:
         gui.amtInput["bg"] = "#b00000"
         gui.output["text"] = "You don't have enough credits"
