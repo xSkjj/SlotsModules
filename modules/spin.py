@@ -23,8 +23,11 @@ def trySpin():
     amt = gui.amtInput.get()
     try:
         int(amt)
-    except:
+    except ValueError:
         return notValid()
+    except:
+        gui.amtInput["bg"] = "#b00000"
+        gui.output["text"] = "Unexpected error"
     #if amt == "":
         #return notValid()
     #for char in amt:

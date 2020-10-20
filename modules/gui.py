@@ -54,7 +54,7 @@ amtInputLabel = tk.Label(userInputs,
                          bg   = bgColor)
 
 amtInput = tk.Entry(userInputs,
-                    textvariable     = tk.StringVar(value=0),
+                    textvariable     = "0",
                     fg               = "white",
                     bg               = "#404040",
                     insertbackground = "white",
