@@ -43,13 +43,16 @@ def trySpin():
 
 def go(amt):
     " the "
+    global bal # <- bad... maybe
+    bal -= amt # subtract the amount used from the balance
+    gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
     gui.output["text"] = "spinning..."
     gui.spinBtn["state"] = "disabled" # lock the spin button
-    gui.spinBtn.update()
+    gui.root.update()
 
     slotIDs = [gui.slotsDisplay.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
 
-    for i in range(slotAmt): # iterate <slotAmt> times...
+    for i in range(slotAmt):
         for rand in range(randint(8, 10)):
             for id in slotIDs[i:]:
                 sym = symbols[randint(0, len(symbols)-1)]
@@ -57,26 +60,24 @@ def go(amt):
             gui.slotsDisplay.update_idletasks()
             gui.slotsDisplay.after(100)
 
-
-    global bal # <- bad
+            
     slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
     win = 0
     if slotVals.count(slotVals[0]) == slotAmt: # if all values are the same, JACKPOT
-        bal += amt*11*slotAmt**2
-        gui.output["text"] = f"You spent {amt} and won {amt*11*slotAmt**2+amt} !!!"
+        bal += int(amt*slotAmt**(len(symbols)/3))
+        gui.output["text"] = f"You spent {amt} and won {int(amt*slotAmt**(len(symbols)/3))} !!!"
     else:
         for i in slotVals:
-            if slotVals.count(i) >= slotAmt / 2:
+            if slotVals.count(i) > 1:
                 win += 1
-        if win > 0 and slotAmt > 2:
+        if win > 1:
             if win == slotAmt:
-                bal += amt*11*slotAmt
-                gui.output["text"] = f"You spent {amt} and won {amt*11*slotAmt+amt} !!"
+                bal += amt*slotAmt*(len(symbols)-1)
+                gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*len(symbols)} !!"
             else:
-                bal += round(amt * slotAmt / (slotAmt - win) - amt)
+                bal += round(amt * slotAmt / (slotAmt - win))
                 gui.output["text"] = f"You spent {amt} and won {round(amt * slotAmt / (slotAmt - win))} !"
         else:
-            bal -= amt # subtract the amount used from the balance
             gui.output["text"] = f"You spent {amt} and lost everything."
 
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
