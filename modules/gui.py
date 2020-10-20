@@ -33,7 +33,7 @@ for slot in range(slotAmt):
                                   outline = "white",
                                   fill    = bgSlots)
     slotsDisplay.create_text(slot*100+50, 50,
-                             text = symbols[randint(0, 15)],
+                             text = symbols[randint(0, len(symbols) - 1)],
                              font = (slotFont, 48, "bold"),
                              fill = "white",
                              tags = f"sym{slot}")
