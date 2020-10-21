@@ -9,8 +9,6 @@ soothe your gambling addiction without losing any real money
    - min: 2
    - max: 6
 
-This is a school project I am working on right now
-
-I might add more features here instead of creating more repositories
+This was a school project
 
 - inspired by t!slots from https://tatsu.gg
