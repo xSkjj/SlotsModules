@@ -28,6 +28,8 @@ def trySpin():
     except:
         gui.amtInput["bg"] = "#b00000"
         gui.output["text"] = "Unexpected error"
+    #finally:
+        #print(f"amt = {amt}")
     #if amt == "":
         #return notValid()
     #for char in amt:
@@ -72,11 +74,11 @@ def go(amt):
                 win += 1
         if win > 1:
             if win == slotAmt:
-                bal += amt*slotAmt*(len(symbols)-1)
+                bal += amt * win * (len(symbols)-1)
                 gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
             else:
-                bal += round(amt * slotAmt * len(symbols) / (slotAmt - win))
-                gui.output["text"] = f"You spent {amt} and won {round(amt * slotAmt * len(symbols) / (slotAmt - win))} !"
+                bal += round(amt * win * (len(symbols)-1) / (slotAmt - win))
+                gui.output["text"] = f"You spent {amt} and won {round(amt * win * (len(symbols)-1) / (slotAmt - win))} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
 
