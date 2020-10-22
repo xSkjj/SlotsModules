@@ -52,21 +52,21 @@ def go(amt):
     gui.spinBtn["state"] = "disabled" # lock the spin button
     gui.root.update()
 
-    slotIDs = [gui.slotsDisplay.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
+    slotIDs = [gui.slots.Canvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
 
     for i in range(slotAmt):
         for rand in range(randint(8, 10)):
             for id in slotIDs[i:]:
                 sym = symbols[randint(0, len(symbols)-1)]
-                gui.slotsDisplay.itemconfigure(id, text=sym)
-            gui.slotsDisplay.update_idletasks()
-            gui.slotsDisplay.after(100)
+                gui.slots.Canvas.itemconfigure(id, text=sym)
+            gui.slots.Canvas.update_idletasks()
+            gui.slots.Canvas.after(100)
 
             
-    slotVals = [gui.slotsDisplay.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
+    slotVals = [gui.slots.Canvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
     win = 0
-    if slotVals.count(slotVals[0]) == slotAmt: # if all values are the same, JACKPOT
-        bal += int(amt*slotAmt**(len(symbols)/3))
+    if slotVals.count(slotVals[0]) == slotAmt:
+        bal += int(amt*slotAmt**(len(symbols)/3)) # amout that gets added if all values are the same
         gui.output["text"] = f"You spent {amt} and won {int(amt*slotAmt**(len(symbols)/3))} !!!"
     else:
         for i in slotVals:

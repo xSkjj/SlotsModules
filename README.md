@@ -8,7 +8,8 @@ soothe your gambling addiction without losing any real money
  - change the amount of slots you play with
    - min: 2
    - max: 6
+ - (WIP) now with Classes and OOP and whatever
 
-This was a school project
+This is a school project I'm working on
 
 - inspired by t!slots from https://tatsu.gg
