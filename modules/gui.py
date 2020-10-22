@@ -1,7 +1,7 @@
 import tkinter as tk
 from random import randint
-from modules import bgColor, bgSlots, slotFont, slotAmt, bal, symbols, func
-
+from modules import bgColor, bgSlots, slotFont, symColor, slotAmt, bal, symbols, func
+from classes import slot
 
 root = tk.Tk()
 
@@ -21,6 +21,12 @@ header = tk.Label(root,
                   font = "Impact 24",
                   fg   = "gold",
                   bg   = bgColor)
+
+slotCanvas = tk.Canvas(root,
+                       width              = slotAmt * 100,
+                       height             = 100,
+                       bg                 = "#692020",
+                       highlightthickness = 0)
 
 output = tk.Label(root,
                   text = "How many credits would you like to use?",
@@ -58,24 +64,5 @@ balLabel = tk.Label(root,
                     fg   = "gold",
                     bg   = bgColor)
 
-class slotsDisplay:
-    def  __init__(self):
-        self.Canvas = tk.Canvas(root,
-                                width              = slotAmt * 100,
-                                height             = 100,
-                                bg                 = "white",
-                                highlightthickness = 0)
-    def add_slot(self, nth):
-        self.Canvas.create_rectangle(nth*100+1, 1,
-                                     nth*100+98, 98,
-                                     outline = "white",
-                                     fill    = bgSlots)
-        self.Canvas.create_text(nth*100+50, 50,
-                                text = symbols[randint(0, len(symbols) - 1)],
-                                font = (slotFont, 48, "bold"),
-                                fill = "white",
-                                tags = f"sym{nth}")
-
-slots = slotsDisplay()
 for i in range(slotAmt):
-    slots.add_slot(i)
+    slot.Slot(slotCanvas, i)

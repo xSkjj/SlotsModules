@@ -8,9 +8,10 @@ config.read(".\\settings.ini") # get window settings from settings.ini
 bgSlots = config.get ("customisation", "slots_background")
 bgColor = config.get ("customisation", "window_background")
 slotFont = config.get("customisation", "slots_font")
+symColor = config.get("customisation", "symbol_color")
 
 slotAmount = config.getint("game_settings", "slot_amount")
 slotAmt = slotAmount if slotAmount > 1 and slotAmount < 7 else 2 if slotAmount < 2 else 6
 
-bal = 1000
+bal = 1e+999
 symbols = "!$&?#☺♥♦♣♠★♂♀♪♫7"

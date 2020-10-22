@@ -52,22 +52,22 @@ def go(amt):
     gui.spinBtn["state"] = "disabled" # lock the spin button
     gui.root.update()
 
-    slotIDs = [gui.slots.Canvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
+    slotIDs = [gui.slotCanvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
 
     for i in range(slotAmt):
         for rand in range(randint(8, 10)):
             for id in slotIDs[i:]:
                 sym = symbols[randint(0, len(symbols)-1)]
-                gui.slots.Canvas.itemconfigure(id, text=sym)
-            gui.slots.Canvas.update_idletasks()
-            gui.slots.Canvas.after(100)
+                gui.slotCanvas.itemconfig(id, text=sym)
+            gui.slotCanvas.update_idletasks()
+            gui.slotCanvas.after(1)
 
             
-    slotVals = [gui.slots.Canvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
+    slotVals = [gui.slotCanvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
     win = 0
     if slotVals.count(slotVals[0]) == slotAmt:
-        bal += int(amt*slotAmt**(len(symbols)/3)) # amout that gets added if all values are the same
-        gui.output["text"] = f"You spent {amt} and won {int(amt*slotAmt**(len(symbols)/3))} !!!"
+        bal += round(amt*slotAmt**((len(symbols)-1)/3)) # amout that gets added if all values are the same
+        gui.output["text"] = f"You spent {amt} and won {round(amt*slotAmt**((len(symbols)-1)/3))} !!!"
     else:
         for i in slotVals:
             if slotVals.count(i) > 1:
@@ -77,8 +77,8 @@ def go(amt):
                 bal += amt * win * (len(symbols)-1)
                 gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
             else:
-                bal += round(amt * win * (len(symbols)-1) / (slotAmt - win))
-                gui.output["text"] = f"You spent {amt} and won {round(amt * win * (len(symbols)-1) / (slotAmt - win))} !"
+                bal += amt * round(0.2 / (1 / len(symbols)**(win - 1)))
+                gui.output["text"] = f"You spent {amt} and won {amt * round(0.2 / (1 / len(symbols)**(win - )))} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
 
