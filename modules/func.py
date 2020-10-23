@@ -78,7 +78,7 @@ def go(amt):
                 gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
             else:
                 bal += amt * round(0.2 / (1 / len(symbols)**(win - 1)))
-                gui.output["text"] = f"You spent {amt} and won {amt * round(0.2 / (1 / len(symbols)**(win - )))} !"
+                gui.output["text"] = f"You spent {amt} and won {amt * round(0.2 / (1 / len(symbols)**(win - 1)))} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
 
