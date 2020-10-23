@@ -67,6 +67,7 @@ def go(amt):
 
     # vvv help me, I'm dying vvv ------------------------------------------------------------------------------------
     # P(X >= 1) = 1 - ((1 - p)**n) --- Probability or something, idk
+    # -> p = 1/len(symbols) in my case
     win = 0 # mess
     if slotVals.count(slotVals[0]) == slotAmt:
         bal += round(amt*slotAmt**((len(symbols)-1)/3)) # amout that gets added if all values are the same | mess
