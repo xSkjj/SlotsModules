@@ -64,23 +64,27 @@ def go(amt):
 
             
     slotVals = [gui.slotCanvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
-    win = 0
+
+    # vvv help me, I'm dying vvv ------------------------------------------------------------------------------------
+    # P(X >= 1) = 1 - ((1 - p)**n) --- Probability or something, idk
+    win = 0 # mess
     if slotVals.count(slotVals[0]) == slotAmt:
-        bal += round(amt*slotAmt**((len(symbols)-1)/3)) # amout that gets added if all values are the same
+        bal += round(amt*slotAmt**((len(symbols)-1)/3)) # amout that gets added if all values are the same | mess
         gui.output["text"] = f"You spent {amt} and won {round(amt*slotAmt**((len(symbols)-1)/3))} !!!"
     else:
-        for i in slotVals:
-            if slotVals.count(i) > 1:
-                win += 1
+        for i in slotVals:                #
+            if slotVals.count(i) > 1:     # this is a mess
+                win += 1                  #
         if win > 1:
             if win == slotAmt:
-                bal += amt * win * (len(symbols)-1)
+                bal += amt * win * (len(symbols)-1) # this is a mess
                 gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
             else:
-                bal += amt * round(0.2 / (1 / len(symbols)**(win - 1)))
-                gui.output["text"] = f"You spent {amt} and won {amt * round(0.2 / (1 / len(symbols)**(win - 1)))} !"
-        else:
-            gui.output["text"] = f"You spent {amt} and lost everything."
+                bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/5) # this is a BIG mess
+                gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/15)} !"
+        else:                                                            # this is the only stuff that's not a mess
+            gui.output["text"] = f"You spent {amt} and lost everything." #
+    # ^^^ help me, I'm dying ^^^ ------------------------------------------------------------------------------------
 
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
     gui.spinBtn.update()
