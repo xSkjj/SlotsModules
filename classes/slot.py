@@ -16,7 +16,3 @@ class Slot:
                                     font = (slotFont, 48, "bold"),
                                     fill = self.symColor,
                                     tags = f"sym{nth}")
-    def set(self, toSet, **kw):
-        self.canv.itemconfig(toSet, kw)
-    def get(self, toGet, value):
-        return self.canv.itemcget(toGet, value)
