@@ -55,7 +55,9 @@ spinBtn = tk.Button(userInputs,
                     text   = "spin",
                     font   = "Arial 10 bold",
                     fg     = "#050",
-                    bg     = "light green",
+                    activeforeground = "#030",
+                    bg     = "#7c7",
+                    activebackground = "#5a5",
                     relief = "flat")
 
 balLabel = tk.Label(root,
