@@ -55,21 +55,21 @@ def go(amt):
     slotIDs = [gui.slotCanvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
 
     for i in range(slotAmt):
-        for rand in range(randint(8, 10)):
-            for px in range(10):
+        for rand in range(7+i):
+            for px in range(7):
                 for id in slotIDs[i:]:
                     gui.slotCanvas.move(id, 0, 10)
+                gui.slotCanvas.after(5)
                 gui.slotCanvas.update_idletasks()
-                gui.slotCanvas.after(10)
             for id in slotIDs[i:]:
-                gui.slotCanvas.move(id, 0, -200)
+                gui.slotCanvas.move(id, 0, -150)
                 sym = symbols[randint(0, len(symbols)-1)]
                 gui.slotCanvas.itemconfig(id, text=sym)
-            for px in range(10):
+            for px in range(8):
                 for id in slotIDs[i:]:
                     gui.slotCanvas.move(id, 0, 10)
+                gui.slotCanvas.after(5)
                 gui.slotCanvas.update_idletasks()
-                gui.slotCanvas.after(10)
 
             
     slotVals = [gui.slotCanvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
