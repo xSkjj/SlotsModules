@@ -84,7 +84,7 @@ def go(amt):
                 bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/5) # this is a BIG mess
                 gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/15)} !"
         else:                                                            #<┬ this is the only stuff that's not a mess
-            gui.output["text"] = f"You spent {amt} and lost everything." #<┘
+            gui.output["text"] = f"You spent {amt} and lost everything." #<┘ maybe...
     # ^^^ help me, I'm dying ^^^ ------------------------------------------------------------------------------------
 
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
