@@ -70,8 +70,8 @@ def go(amt):
     # -> p = 1/len(symbols) in my case
     win = 0 # mess
     if slotVals.count(slotVals[0]) == slotAmt:
-        bal += amt * round(len(symbols)**(slotAmt - 1) / 5) # amout that gets added if all values are the same
-        gui.output["text"] = f"You spent {amt} and won {round(amt*slotAmt**((len(symbols)-1)/3))} !!!"
+        bal += amt * round(len(symbols)**(slotAmt - 1) * 0.78125) # amout that gets added if all values are the same
+        gui.output["text"] = f"You spent {amt} and won {amt*round(len(symbols)**(slotAmt-1)*0.78125)} !!!"
     else:
         for i in slotVals:                #<┐
             if slotVals.count(i) > 1:     #<┼ this is a mess
