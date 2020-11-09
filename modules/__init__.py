@@ -11,7 +11,7 @@ slotFont = config.get("customisation", "slots_font")
 symColor = config.get("customisation", "symbol_color")
 
 slotAmount = config.getint("game_settings", "slot_amount")
-slotAmt = slotAmount if slotAmount > 1 and slotAmount < 8 else 2 if slotAmount < 2 else 7
+slotAmt = slotAmount if slotAmount > 1 and slotAmount <= 7 else 2 if slotAmount < 2 else 7
 
 bal = 1000
 symbols = "!$&?#☺♥♦♣♠★♂♀♪♫7"
