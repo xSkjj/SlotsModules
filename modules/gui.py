@@ -25,7 +25,7 @@ header = tk.Label(root,
 slotCanvas = tk.Canvas(root,
                        width              = slotAmt * 100,
                        height             = 100,
-                       bg                 = "#692020",
+                       bg                 = bgSlots,
                        highlightthickness = 0)
 
 output = tk.Label(root,
