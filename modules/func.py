@@ -75,7 +75,7 @@ def go(amt):
     slotVals = [gui.slotCanvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
 
     # vvv help me, I'm dying vvv ------------------------------------------------------------------------------------
-    # P(X >= 1) = 1 - ((1 - p)**n) --- Probability or something, idk
+    # P(X >= 1) = 1 - (1 - p)**n --- Probability or something, idk
     # -> p = 1/len(symbols) in my case
     win = 0 # mess
     if slotVals.count(slotVals[0]) == slotAmt:
