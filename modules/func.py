@@ -44,8 +44,8 @@ def trySpin():
 
 
 def go(amt):
-    " the "
-    global bal # <- bad... maybe
+    "spin the slot ... thing"
+    global bal #<- is this bad?
     bal -= amt # subtract the amount used from the balance
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
     gui.output["text"] = "spinning..."
@@ -70,7 +70,7 @@ def go(amt):
     # -> p = 1/len(symbols) in my case
     win = 0 # mess
     if slotVals.count(slotVals[0]) == slotAmt:
-        bal += round(amt*slotAmt**((len(symbols)-1)/3)) # amout that gets added if all values are the same | mess
+        bal += amt * round(len(symbols)**(slotAmt - 1) / 5) # amout that gets added if all values are the same
         gui.output["text"] = f"You spent {amt} and won {round(amt*slotAmt**((len(symbols)-1)/3))} !!!"
     else:
         for i in slotVals:                #<┐
@@ -85,7 +85,7 @@ def go(amt):
                 gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/15)} !"
         else:                                                            #<┬ this is the only stuff that's not a mess
             gui.output["text"] = f"You spent {amt} and lost everything." #<┘ maybe...
-    # ^^^ help me, I'm dying ^^^ ------------------------------------------------------------------------------------
+    # ^^^ help me, I'm dying ^^^ --------------------------------------------------------------MESS------------------
 
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
     gui.spinBtn.update()
