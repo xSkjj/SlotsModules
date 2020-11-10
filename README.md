@@ -9,6 +9,7 @@ soothe your gambling addiction without losing any real money
    - max: 7
  - with Classes or OOP or whatever
  - spin animations!
+ - recursion!
 
 This is a school project I'm working on
 
