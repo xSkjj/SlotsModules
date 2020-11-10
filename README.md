@@ -2,13 +2,13 @@
 
 soothe your gambling addiction without losing any real money
 
- - now modularised
-   - you won't notice any difference tho
+ - modularised
  - and with a settings file which can be modified by an (imaginary) end-user
  - change the amount of slots you play with
    - min: 2
    - max: 7
- - (WIP) now with Classes and OOP and whatever
+ - with Classes or OOP or whatever
+ - Animations!
 
 This is a school project I'm working on
 
