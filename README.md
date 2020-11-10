@@ -8,7 +8,7 @@ soothe your gambling addiction without losing any real money
    - min: 2
    - max: 7
  - with Classes or OOP or whatever
- - Animations!
+ - spin animations!
 
 This is a school project I'm working on
 
