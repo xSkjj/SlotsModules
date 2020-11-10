@@ -53,7 +53,7 @@ def go(amt):
     gui.root.update()
 
     slotIDs = [gui.slotCanvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
-    
+
     def move_down(i, n):
         if n > 0:
             for id in slotIDs[i:]:
@@ -76,9 +76,8 @@ def go(amt):
 
     for i in range(slotAmt):
         spin_n_times(10)
-            
 
-            
+
     slotVals = [gui.slotCanvas.itemcget(id, "text") for id in slotIDs] # put the symbol of each slot in a list
 
     win = 0
