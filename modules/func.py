@@ -88,8 +88,6 @@ def go(amt):
     if slotVals.count(slotVals[0]) == slotAmt:
         bal += amt * round(len(symbols)**(slotAmt - 1) * 0.78125) # amout that gets added if all values are the same
         gui.output["text"] = f"You spent {amt} and won {amt*round(len(symbols)**(slotAmt-1)*0.78125)} !!!"
-        if slotVals[0] == "♂":
-            gui.output["text"] = "gachi moment"
     else:
         for i in slotVals:                      #<┐
             if slotVals.count(i) > slotAmt/3:   #<┼ this is a mess
