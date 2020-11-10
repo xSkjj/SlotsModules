@@ -14,4 +14,4 @@ slotAmount = config.getint("game_settings", "slot_amount")
 slotAmt = slotAmount if slotAmount > 1 and slotAmount <= 7 else 2 if slotAmount < 2 else 7
 
 bal = 1000
-symbols = "!$&?#☺♥♦♣♠★♂♀♪♫7"
+symbols = "🍒$&?#☺♥♦♣♠★♂♀♪♫7"
