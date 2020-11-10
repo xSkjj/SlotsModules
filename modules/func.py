@@ -53,26 +53,33 @@ def go(amt):
     gui.root.update()
 
     slotIDs = [gui.slotCanvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
+    
+    def move_down(i, n):
+        if n > 0:
+            for id in slotIDs[i:]:
+                gui.slotCanvas.move(id, 0, 10)
+            gui.slotCanvas.after(5)
+            gui.slotCanvas.update_idletasks()
+            move_down(i, n-1)
 
-    for i in range(slotAmt):
-        for rand in range(7+i):
-            for px in range(7):
-                for id in slotIDs[i:]:
-                    gui.slotCanvas.move(id, 0, 10)
-                gui.slotCanvas.after(5)
-                gui.slotCanvas.update_idletasks()
+
+    def spin_n_times(n):
+        if n > 0:
+            move_down(i, 7)
             for id in slotIDs[i:]:
                 gui.slotCanvas.move(id, 0, -150)
                 sym = symbols[randint(0, len(symbols)-1)]
                 gui.slotCanvas.itemconfig(id, text=sym)
-            for px in range(8):
-                for id in slotIDs[i:]:
-                    gui.slotCanvas.move(id, 0, 10)
-                gui.slotCanvas.after(5)
-                gui.slotCanvas.update_idletasks()
+            move_down(i, 8)
+            spin_n_times(n-1)
+
+
+    for i in range(slotAmt):
+        spin_n_times(10)
+            
 
             
-    slotVals = [gui.slotCanvas.itemcget(i, "text") for i in slotIDs] # put the symbol of each slot in a list
+    slotVals = [gui.slotCanvas.itemcget(id, "text") for id in slotIDs] # put the symbol of each slot in a list
 
     # vvv help me, I'm dying vvv ------------------------------------------------------------------------------------
     # P(X >= 1) = 1 - (1 - p)**n --- Probability or something, idk
@@ -84,16 +91,16 @@ def go(amt):
         if slotVals[0] == "♂":
             gui.output["text"] = "gachi moment"
     else:
-        for i in slotVals:                #<┐
-            if slotVals.count(i) > 1:     #<┼ this is a mess
-                win += 1                  #<┘
+        for i in slotVals:                      #<┐
+            if slotVals.count(i) > slotAmt/3:   #<┼ this is a mess
+                win += 1                        #<┘
         if win > 1:
             if win == slotAmt:
                 bal += amt * win * (len(symbols)-1) # this is a mess
                 gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
             else:
-                bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/5) # this is a BIG mess
-                gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/15)} !"
+                bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3) # this is a BIG mess
+                gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3)} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
     # ^^^ help me, I'm dying ^^^ --------------------------------------------------------------MESS------------------
