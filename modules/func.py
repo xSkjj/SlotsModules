@@ -81,27 +81,23 @@ def go(amt):
             
     slotVals = [gui.slotCanvas.itemcget(id, "text") for id in slotIDs] # put the symbol of each slot in a list
 
-    # vvv help me, I'm dying vvv ------------------------------------------------------------------------------------
-    # P(X >= 1) = 1 - (1 - p)**n --- Probability or something, idk
-    # -> p = 1/len(symbols) in my case
-    win = 0 # mess
+    win = 0
     if slotVals.count(slotVals[0]) == slotAmt:
         bal += amt * round(len(symbols)**(slotAmt - 1) * 0.78125) # amout that gets added if all values are the same
         gui.output["text"] = f"You spent {amt} and won {amt*round(len(symbols)**(slotAmt-1)*0.78125)} !!!"
     else:
-        for i in slotVals:                      #<┐
-            if slotVals.count(i) > slotAmt/3:   #<┼ this is a mess
-                win += 1                        #<┘
+        for i in slotVals:
+            if slotVals.count(i) > slotAmt/3:
+                win += 1
         if win > 1:
             if win == slotAmt:
-                bal += amt * win * (len(symbols)-1) # this is a mess
+                bal += amt * win * (len(symbols)-1)
                 gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
             else:
-                bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3) # this is a BIG mess
+                bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3)
                 gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3)} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
-    # ^^^ help me, I'm dying ^^^ --------------------------------------------------------------MESS------------------
 
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
     gui.spinBtn.update()
