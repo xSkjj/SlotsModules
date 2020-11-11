@@ -1,5 +1,5 @@
 from random import randint
-from modules import slotAmt, bal, symbols, gui
+from modules import slotAmt, bal, symbols, symData, gui
 
 
 def notValid():
@@ -44,7 +44,6 @@ def trySpin():
 
 
 def go(amt):
-    "spin the slot ... thing"
     global bal #<- is this bad?
     bal -= amt # subtract the amount used from the balance
     gui.balLabel["text"] = f"Balance: {bal}" # update the balance Label with the new balance
@@ -54,28 +53,28 @@ def go(amt):
 
     slotIDs = [gui.slotCanvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
 
-    def move_down(i, n):
+    def move_down(i, n, delay):
         if n > 0:
             for id in slotIDs[i:]:
                 gui.slotCanvas.move(id, 0, 10)
-            gui.slotCanvas.after(5)
+            gui.slotCanvas.after(delay)
             gui.slotCanvas.update_idletasks()
-            move_down(i, n-1)
+            move_down(i, n-1, delay)
 
 
-    def spin_n_times(n):
+    def spinAnim(i, n, delay):
         if n > 0:
-            move_down(i, 7)
+            move_down(i, 7, delay)
             for id in slotIDs[i:]:
                 gui.slotCanvas.move(id, 0, -150)
-                sym = symbols[randint(0, len(symbols)-1)]
-                gui.slotCanvas.itemconfig(id, text=sym)
-            move_down(i, 8)
-            spin_n_times(n-1)
+                randSym = symbols[randint(0, len(symbols)-1)]
+                gui.slotCanvas.itemconfig(id, text=randSym, fill=symData[randSym]["color"])
+            move_down(i, 8, delay)
+            spinAnim(i, n-1, delay)
 
 
     for i in range(slotAmt):
-        spin_n_times(10)
+        spinAnim(i, 6, 8)
 
 
     slotVals = [gui.slotCanvas.itemcget(id, "text") for id in slotIDs] # put the symbol of each slot in a list
@@ -86,7 +85,7 @@ def go(amt):
         gui.output["text"] = f"You spent {amt} and won {amt*round(len(symbols)**(slotAmt-1)*0.78125)} !!!"
     else:
         for i in slotVals:
-            if slotVals.count(i) > slotAmt/3:
+            if slotVals.count(i) >= 2:
                 win += 1
         if win > 1:
             if win == slotAmt:
