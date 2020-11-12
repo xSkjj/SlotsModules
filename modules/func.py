@@ -51,7 +51,8 @@ def go(amt):
     gui.spinBtn["state"] = "disabled" # lock the spin button
     gui.root.update()
 
-    slotIDs = [gui.slotCanvas.find_withtag(f"sym{i}")[0] for i in range(slotAmt)] # put all slot symbol IDs in a list
+    slotIDs = [gui.sym[key].symbol for key in gui.sym] # put all slot symbol IDs in a list
+    
 
     def move_down(i, n, delay):
         if n > 0:
@@ -78,22 +79,19 @@ def go(amt):
 
 
     slotVals = [gui.slotCanvas.itemcget(id, "text") for id in slotIDs] # put the symbol of each slot in a list
+    slotVals = {sym : slotVals.count(sym) for sym in slotVals} # turn the list into a dict --> {sym: occurences}
 
     win = 0
-    if slotVals.count(slotVals[0]) == slotAmt:
-        bal += amt * round(len(symbols)**(slotAmt - 1) * 0.78125) # amout that gets added if all values are the same
-        gui.output["text"] = f"You spent {amt} and won {amt*round(len(symbols)**(slotAmt-1)*0.78125)} !!!"
+    if len(slotVals) == 1:
+        bal += amt * round(len(symData)**(slotAmt - 1)) # amout that gets added if all values are the same
+        gui.output["text"] = f"You spent {amt} and won {amt*round(len(symData)**(slotAmt-1))} !!!"
     else:
-        for i in slotVals:
-            if slotVals.count(i) >= 2:
-                win += 1
-        if win > 1:
-            if win == slotAmt:
-                bal += amt * win * (len(symbols)-1)
-                gui.output["text"] = f"You spent {amt} and won {amt*slotAmt*(len(symbols)-1)} !!"
-            else:
-                bal += amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3)
-                gui.output["text"] = f"You spent {amt} and won {amt * round((1 / (1 - (1 - 1 / len(symbols)**(win-1))**(slotAmt-1)))/3)} !"
+        for key in slotVals:
+            if slotVals[key] >= 2:
+                win += 20**2 * slotVals[key] / gui.symData[key]["occurence"]**2
+        if win > 0:
+            bal += round(amt * win)
+            gui.output["text"] = f"You spent {amt} and won {round(amt * win)} !"
         else:
             gui.output["text"] = f"You spent {amt} and lost everything."
 

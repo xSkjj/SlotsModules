@@ -1,6 +1,6 @@
 import tkinter as tk
 from random import randint
-from modules import bgColor, bgSlots, slotAmt, bal, func
+from modules import bgColor, bgSlots, slotAmt, symData, symbols, bal, func
 from classes import slot
 
 root = tk.Tk()
@@ -66,5 +66,10 @@ balLabel = tk.Label(root,
                     fg   = "gold",
                     bg   = bgColor)
 
+sym = {}
 for i in range(slotAmt):
-    slot.Slot(slotCanvas, i)
+    sym[i] = slot.Slot(slotCanvas, i)
+    randSym = symbols[randint(0, len(symbols)-1)]
+    sym[i].set(sym[i].symbol,
+               text = randSym,
+               fill = symData[randSym]["color"])
