@@ -1,4 +1,4 @@
-from configparser import ConfigParser
+﻿from configparser import ConfigParser
 
 config = ConfigParser()
 
@@ -18,7 +18,7 @@ slotAmt = minSlots if slotAmount < minSlots else maxSlots if slotAmount > maxSlo
 #           (slotAmount > maxSlots) ? maxSlots :
 #           slotAmount
 
-# symData = { symbol: { symbol color: color, n/len(symbols): multiplier}}
+# symData = { symbol: { symbol color: color, occurence: amount}}
 symData = {
     "🍒": {"color": "#790604", "occurence": 35},
     "🍇": {"color": "#6f2da8", "occurence": 35},
