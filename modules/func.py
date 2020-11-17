@@ -39,7 +39,7 @@ def try_spin():
         go(int(amt))
 
 
-def go(amt):
+def go(amt):  # TODO: add multithreading to improve performance
     global bal  # bad, but idk how to fix it
     bal -= amt  # subtract the amount used from the balance
     gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
