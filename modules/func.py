@@ -67,7 +67,7 @@ def go(amt):  # TODO: add multithreading to improve performance
             spin_anim(start_i, n - 1, delay)
 
     for i in range(slotAmt):
-        spin_anim(i, 6, 8)
+        spin_anim(i, 10, 5)
 
     slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]  # put the symbol of each slot in a list
     slot_values = {sym: slot_values.count(sym) for sym in slot_values}  # turn the list into a dict {sym: occurrences}
@@ -79,7 +79,7 @@ def go(amt):  # TODO: add multithreading to improve performance
     else:
         for key in slot_values:
             if slot_values[key] >= 2:
-                win += 6 ** 2 * slot_values[key] / gui.symData[key]["occurrence"] ** 2
+                win += (20 / 3) ** 2 * slot_values[key] / gui.symData[key]["occurrence"] ** 2
         if round(amt * win) > 0:
             bal += round(amt * win)
             gui.output["text"] = f"You spent {amt} and won {round(amt * win)} !"

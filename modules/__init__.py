@@ -4,7 +4,6 @@ config = ConfigParser()
 
 config.read(".\\settings.ini")  # get window settings from settings.ini
 
-
 bgColor = config.get("customisation", "window_background")
 bgSlots = config.get("customisation", "slots_background")
 
@@ -41,7 +40,6 @@ symData = {
 symbols = [key for key in symData for i in range(symData[key]["occurrence"])]
 
 startBal = 1000  # starting balance
-
 
 # if __name__ == "__main__":
 #     import tkinter as tk

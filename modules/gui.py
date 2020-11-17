@@ -51,7 +51,7 @@ amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amou
                     relief="flat")
 
 spinBtn = tk.Button(userInputs,  # the button to start the spinning
-                    # it's where the magic happens
+                    # it's where the magic happens... or the horror
                     command=func.try_spin,
                     text="spin",
                     font="Arial 10 bold",
