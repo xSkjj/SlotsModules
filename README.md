@@ -13,4 +13,4 @@ soothe your gambling addiction without losing any real money
 
 This is a school project I'm working on
 
-- inspired by t!slots from https://tatsu.gg
+ - inspired by t!slots from https://tatsu.gg
