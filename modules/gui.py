@@ -1,6 +1,6 @@
 import tkinter as tk
 from random import randint
-from modules import bgColor, bgSlots, slotAmt, symData, symbols, bal, func
+from modules import bgColor, bgSlots, slotAmt, symData, symbols, startBal, func
 from classes import slot
 
 root = tk.Tk()
@@ -62,7 +62,7 @@ spinBtn = tk.Button(userInputs,  # the button to start the spinning
                     relief="flat")
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
-                    text=f"Balance: {bal}",
+                    text=f"Balance: {startBal}",
                     font="Arial 10 bold",
                     fg="gold",
                     bg=bgColor)

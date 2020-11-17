@@ -1,5 +1,5 @@
 from random import randint
-from modules import slotAmt, bal, symbols, symData, gui
+from modules import slotAmt, symbols, symData, gui
 
 
 def not_valid():
@@ -12,16 +12,15 @@ def not_valid():
 
 def try_spin():
     """
-    Check if the user's input is a valid integer number
-    If it isn't valid, run notValid()
-    If it is valid, but greater than the user's balance ->
-      -> 1. change the text background of the output to a red color
-      -> 2. change the text of the output-Label to get the message across
-    If the number doesn't exceed the user's balance, and run the function to spin: go()
+    Run the function to spin with the user's input ->
+      -> if it isn't a valid integer number, run notValid()
+      -> if it exceeds the user's balance ->
+        -> change the text background of the output to a red color
+        -> change the text of the output-Label
     """
     amt = gui.amtInput.get()
     try:
-        int(amt)  # if the user's input is an int...
+        int(amt)  # check if the user's input can be an int...
     except ValueError:
         return not_valid()  # ... if it isn't, run not_valid() and stop
     # finally:
@@ -31,7 +30,7 @@ def try_spin():
     # for char in amt:
     #     if char not in "0123456789":
     #         return notValid()
-    if int(amt) > bal:  #
+    if int(amt) > int(gui.balLabel["text"].split()[1]):
         gui.amtInput["bg"] = "#b00000"
         gui.output["text"] = "You don't have enough credits"
     else:
@@ -40,7 +39,7 @@ def try_spin():
 
 
 def go(amt):  # TODO: add multithreading to improve performance
-    global bal  # bad, but idk how to fix it
+    bal = int(gui.balLabel["text"].split()[1])
     bal -= amt  # subtract the amount used from the balance
     gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
     gui.output["text"] = "spinning..."

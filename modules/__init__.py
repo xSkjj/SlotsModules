@@ -40,7 +40,7 @@ symData = {
 
 symbols = [key for key in symData for i in range(symData[key]["occurrence"])]
 
-bal = 1000  # starting balance
+startBal = 1000  # starting balance
 
 
 # if __name__ == "__main__":
