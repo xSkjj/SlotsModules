@@ -10,4 +10,6 @@ gui.amtInput.grid(column=1, row=0, padx=5)
 gui.spinBtn.grid(column=2, row=0, padx=5)
 gui.balLabel.pack()
 
+gui.root.bind("<Return>", gui.func.try_spin)
+
 gui.root.mainloop()

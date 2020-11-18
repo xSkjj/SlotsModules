@@ -11,7 +11,12 @@ def not_valid():
     gui.output["text"] = "Amount is not a valid number"  # change the text of the output-Label
 
 
-def try_spin():
+def try_spin(*event):
+    if gui.spinBtn["state"] == "normal":
+        spin()
+
+
+def spin():
     """
     Run the function to spin with the user's input ->
       -> if it isn't a valid integer number, run notValid()
@@ -37,6 +42,24 @@ def try_spin():
     else:
         gui.amtInput["bg"] = "#404040"
         go(int(amt))
+
+
+def move_down(ids, n, delay):
+    for i in range(n):
+        for ID in ids:
+            gui.slotCanvas.move(ID, 0, 10)
+        gui.slotCanvas.update_idletasks()
+        gui.slotCanvas.after(delay)
+
+
+def spin_anim(ids, n, delay):
+    for i in range(n):
+        move_down(ids, 7, delay)
+        for ID in ids:
+            gui.slotCanvas.move(ID, 0, -150)
+            rand_sym = symbols[randint(0, len(symbols) - 1)]
+            gui.slotCanvas.itemconfig(ID, text=rand_sym, fill=symData[rand_sym]["color"])
+        move_down(ids, 8, delay)
 
 
 class AnimThread(threading.Thread):
