@@ -8,14 +8,25 @@ bgColor = config.get("customisation", "window_background")
 bgSlots = config.get("customisation", "slots_background")
 
 slotAmount = config.getint("game_settings", "slot_amount")
+fastSpin = config.getboolean("game_settings", "fast_spin")
 
 minSlots = 2
 maxSlots = 7
-slotAmt = minSlots if slotAmount < minSlots else maxSlots if slotAmount > maxSlots else slotAmount
-# with question mark operator
+slotAmt = minSlots if slotAmount < minSlots \
+    else maxSlots if slotAmount > maxSlots \
+    else slotAmount
+# this variable is this value if this condition is true
+# else this other value if this other condition is true
+# else this other other value
+
+# with question mark operator in other languages
 # slotAmt = (slotAmount < minSlots) ? minSlots :
 #           (slotAmount > maxSlots) ? maxSlots :
 #           slotAmount
+
+# this variable is - if this condition is true - this value
+# else - if this other condition is true - this other value
+# else this other other value
 
 # symData = { symbol: { symbol color: color, occurrence: amount}}
 symData = {
