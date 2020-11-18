@@ -67,6 +67,16 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     fg="gold",
                     bg=bgColor)
 
+settingsBtn = tk.Button(root,
+                        command=func.show_settings,
+                        text="⚙",
+                        font="Arial 12",
+                        fg="#808080",
+                        activeforeground="#505050",
+                        bg="#404040",
+                        activebackground="#202020",
+                        relief="flat")
+
 sym = {}  # dictionary for each slot
 for i in range(slotAmt):  # has to be in a for loop, since the user can change the amount of slots
     sym[i] = slot.Slot(slotCanvas, i)

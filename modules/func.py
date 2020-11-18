@@ -103,3 +103,7 @@ class AnimThread(threading.Thread):
 def go():
     bg = AnimThread()
     bg.start()
+
+
+def show_settings():
+    print("WIP")  # TODO: add settings
