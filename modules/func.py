@@ -1,5 +1,5 @@
 from random import randint
-from modules import slotAmt, symbols, symData, gui
+from modules import slotAmt, fastSpin, symbols, symData, gui
 import threading
 
 
@@ -53,6 +53,7 @@ def move_down(ids, n, delay):
 
 
 def spin_anim(ids, n, delay):
+    delay, n = 1, 1 if fastSpin else delay
     for i in range(n):
         move_down(ids, 7, delay)
         for ID in ids:
@@ -78,7 +79,7 @@ class AnimThread(threading.Thread):
         slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
 
         for i in range(slotAmt):
-            spin_anim(slot_ids[i:], 1, 1)
+            spin_anim(slot_ids[i:], 10, 10)
 
         slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]  # put the symbol of each slot in a list
         slot_values = {sym: slot_values.count(sym) for sym in slot_values}
