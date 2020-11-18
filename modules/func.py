@@ -53,7 +53,8 @@ def move_down(ids, n, delay):
 
 
 def spin_anim(ids, n, delay):
-    delay, n = 1, 1 if fastSpin else delay
+    if fastSpin:
+        delay, n = 1, 1
     for i in range(n):
         move_down(ids, 7, delay)
         for ID in ids:
