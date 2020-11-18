@@ -8,8 +8,8 @@ class Slot:
                                           width=2,
                                           outline="#692020")
 
-    def set(self, to_set, **kw):
-        self.canvas.itemconfig(to_set, kw)
+    def set(self, to_set, **kwargs):
+        self.canvas.itemconfig(to_set, kwargs)
 
     def get(self, to_get, value):
         return self.canvas.itemcget(to_get, value)
