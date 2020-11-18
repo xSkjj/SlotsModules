@@ -67,7 +67,7 @@ class AnimThread(threading.Thread):
             self.spin_anim(self.ids[i:], 10, 5)
 
 
-def go(amt):  # TODO: add multithreading to improve performance
+def go(amt):
     bal = int(gui.balLabel["text"].split()[1])
     bal -= amt  # subtract the amount used from the balance
     gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
