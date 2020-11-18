@@ -1,5 +1,6 @@
 from random import randint
 from modules import slotAmt, symbols, symData, gui
+import threading
 
 
 def not_valid():
@@ -38,6 +39,34 @@ def try_spin():
         go(int(amt))
 
 
+class AnimThread(threading.Thread):
+    def __init__(self, ids):
+        threading.Thread.__init__(self)
+        self.ids = ids
+
+    def move_down(self, ids, n, delay):
+        if n > 0:
+            for ID in ids:
+                gui.slotCanvas.move(ID, 0, 10)
+            gui.slotCanvas.update_idletasks()
+            gui.slotCanvas.after(delay)
+            self.move_down(ids, n - 1, delay)
+
+    def spin_anim(self, ids, n, delay):
+        if n > 0:
+            self.move_down(ids, 7, delay)
+            for ID in ids:
+                gui.slotCanvas.move(ID, 0, -150)
+                rand_sym = symbols[randint(0, len(symbols) - 1)]
+                gui.slotCanvas.itemconfig(ID, text=rand_sym, fill=symData[rand_sym]["color"])
+            self.move_down(ids, 8, delay)
+            self.spin_anim(ids, n - 1, delay)
+
+    def run(self):
+        for i in range(slotAmt):
+            self.spin_anim(self.ids[i:], 10, 5)
+
+
 def go(amt):  # TODO: add multithreading to improve performance
     bal = int(gui.balLabel["text"].split()[1])
     bal -= amt  # subtract the amount used from the balance
@@ -48,26 +77,8 @@ def go(amt):  # TODO: add multithreading to improve performance
 
     slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
 
-    def move_down(start_i, n, delay):
-        if n > 0:
-            for ID in slot_ids[start_i:]:
-                gui.slotCanvas.move(ID, 0, 10)
-            gui.slotCanvas.after(delay)
-            gui.slotCanvas.update_idletasks()
-            move_down(start_i, n - 1, delay)
-
-    def spin_anim(start_i, n, delay):
-        if n > 0:
-            move_down(start_i, 7, delay)
-            for ID in slot_ids[start_i:]:
-                gui.slotCanvas.move(ID, 0, -150)
-                rand_sym = symbols[randint(0, len(symbols) - 1)]
-                gui.slotCanvas.itemconfig(ID, text=rand_sym, fill=symData[rand_sym]["color"])
-            move_down(start_i, 8, delay)
-            spin_anim(start_i, n - 1, delay)
-
-    for i in range(slotAmt):
-        spin_anim(i, 10, 5)
+    bg = AnimThread(slot_ids)
+    bg.start()
 
     slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]  # put the symbol of each slot in a list
     slot_values = {sym: slot_values.count(sym) for sym in slot_values}  # turn the list into a dict {sym: occurrences}
