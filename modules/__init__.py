@@ -51,11 +51,3 @@ symData = {
 symbols = [key for key in symData for i in range(symData[key]["occurrence"])]
 
 startBal = 1000  # starting balance
-
-# if __name__ == "__main__":
-#     import tkinter as tk
-
-#     root = tk.Tk()
-#     for i in range(len(symbols)):
-#         tk.Label(root, text=symbols[i]).grid(row=0, column=i)
-#     root.mainloop()

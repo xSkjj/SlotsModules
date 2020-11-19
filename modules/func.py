@@ -1,6 +1,7 @@
 from random import randint
 from modules import slotAmt, fastSpin, symbols, symData, gui
 import threading
+import multiprocessing
 
 
 def not_valid():
@@ -11,7 +12,7 @@ def not_valid():
     gui.output["text"] = "Amount is not a valid number"  # change the text of the output-Label
 
 
-def try_spin(*event):
+def try_spin(event):
     if gui.spinBtn["state"] == "normal":
         spin()
 
@@ -108,28 +109,28 @@ def go():
 
 def show_settings():
     pixels = {}
-    for i in range(100):
+    for i in range(10000):
         pixels[i] = {"id": gui.slotCanvas.create_rectangle(0, 0,
-                                                           5, 5,
+                                                           1, 1,
                                                            width=0,
                                                            fill="black"), "x": 0, "y": 0}
 
-    RandMove(pixels).start()
+    # RandMove(pixels).start()
 
 
-class RandMove(threading.Thread):
-    def __init__(self, to_move):
-        threading.Thread.__init__(self)
-        self.items = to_move
-
-    def run(self):
-        print("running CPU intensive shit...")
-        for key in self.items:
-            rand_x = randint(0, 59)
-            rand_y = randint(0, 19)
-            gui.slotCanvas.move(self.items[key]["id"],
-                                (rand_x - self.items[key]["x"]) * 5,
-                                (rand_y - self.items[key]["y"]) * 5)
-            self.items[key]["x"] = rand_x
-            self.items[key]["y"] = rand_y
-        print("CPU intensive shit done")
+# class RandMove(threading.Thread):
+#     def __init__(self, to_move):
+#         threading.Thread.__init__(self)
+#         self.items = to_move
+#
+#     def run(self):
+#         print("running CPU intensive stuff...")
+#         for key in self.items:
+#             rand_x = randint(0, 299)
+#             rand_y = randint(0, 99)
+#             gui.slotCanvas.move(self.items[key]["id"],
+#                                 (rand_x - self.items[key]["x"]),
+#                                 (rand_y - self.items[key]["y"]))
+#             self.items[key]["x"] = rand_x
+#             self.items[key]["y"] = rand_y
+#         print("CPU intensive stuff done")
