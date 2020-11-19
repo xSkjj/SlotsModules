@@ -82,9 +82,10 @@ class AnimThread(threading.Thread):
         for i in range(slotAmt):
             spin_anim(slot_ids[i:], 10, 10)
 
-        slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]  # put the symbol of each slot in a list
-        slot_values = {sym: slot_values.count(sym) for sym in slot_values}
+        # put each symbol in a list
+        slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]
         # turn the list into a dict {sym: occurrences}
+        slot_values = {sym: slot_values.count(sym) for sym in slot_values}
 
         win = 0
         for key in slot_values:
@@ -102,7 +103,8 @@ class AnimThread(threading.Thread):
 
 
 def go():
-    AnimThread().start()
+    bg = AnimThread()
+    bg.start()
 
 
 def on_close():
