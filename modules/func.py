@@ -1,7 +1,6 @@
 from random import randint
 from modules import slotAmt, fastSpin, symbols, symData, gui
 import threading
-import multiprocessing
 
 
 def not_valid():
@@ -103,34 +102,13 @@ class AnimThread(threading.Thread):
 
 
 def go():
-    bg = AnimThread()
-    bg.start()
+    AnimThread().start()
+
+
+def on_close():
+    # insert something that kills still running threads
+    gui.root.destroy()
 
 
 def show_settings():
-    pixels = {}
-    for i in range(10000):
-        pixels[i] = {"id": gui.slotCanvas.create_rectangle(0, 0,
-                                                           1, 1,
-                                                           width=0,
-                                                           fill="black"), "x": 0, "y": 0}
-
-    # RandMove(pixels).start()
-
-
-# class RandMove(threading.Thread):
-#     def __init__(self, to_move):
-#         threading.Thread.__init__(self)
-#         self.items = to_move
-#
-#     def run(self):
-#         print("running CPU intensive stuff...")
-#         for key in self.items:
-#             rand_x = randint(0, 299)
-#             rand_y = randint(0, 99)
-#             gui.slotCanvas.move(self.items[key]["id"],
-#                                 (rand_x - self.items[key]["x"]),
-#                                 (rand_y - self.items[key]["y"]))
-#             self.items[key]["x"] = rand_x
-#             self.items[key]["y"] = rand_y
-#         print("CPU intensive stuff done")
+    print("WIP")
