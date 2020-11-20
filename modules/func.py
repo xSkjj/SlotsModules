@@ -109,4 +109,4 @@ def on_close():
 
 
 def show_settings():
-    print("WIP")
+    gui.output["text"] = "Work In Progress"
