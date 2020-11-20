@@ -112,4 +112,4 @@ def show_settings():
     if gui.settingsFrame.winfo_ismapped():
         gui.settingsFrame.pack_forget()
     else:
-        gui.settingsFrame.pack(fill='x', pady=8)
+        gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())

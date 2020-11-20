@@ -81,7 +81,9 @@ settingsBtn = tk.Button(root,
                         relief="flat")
 
 settingsFrame = tk.Frame(root,  # the container for all settings
-                         bg=bgColor)
+                         bg=bgColor,
+                         highlightthickness=2,
+                         highlightbackground="white")
 
 settingsLabel = tk.Label(settingsFrame,
                          text="settings",
@@ -91,7 +93,7 @@ settingsLabel = tk.Label(settingsFrame,
 settingsLabel.pack()
 
 closeSettingsBtn = tk.Button(settingsFrame,
-                             command=settingsFrame.pack_forget,
+                             command=settingsFrame.place_forget,
                              text="❌",
                              font="Arial 12",
                              fg="#808080",
@@ -99,7 +101,7 @@ closeSettingsBtn = tk.Button(settingsFrame,
                              bg="#404040",
                              activebackground="#202020",
                              relief="flat")
-closeSettingsBtn.place(x=5, y=5, width=32, height=32)
+closeSettingsBtn.place(x=3, y=3, width=32, height=32)
 
 tempWIPLabel = tk.Label(settingsFrame,
                         text="Work In Progress",
