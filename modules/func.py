@@ -109,4 +109,7 @@ def on_close():
 
 
 def show_settings():
-    gui.settingsFrame.pack(fill='x', pady=8)
+    if gui.settingsFrame.winfo_ismapped():
+        gui.settingsFrame.pack_forget()
+    else:
+        gui.settingsFrame.pack(fill='x', pady=8)

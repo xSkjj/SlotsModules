@@ -81,8 +81,7 @@ settingsBtn = tk.Button(root,
                         relief="flat")
 
 settingsFrame = tk.Frame(root,  # the container for all settings
-                         bg=bgColor,
-                         highlightbackground=bgSlots)
+                         bg=bgColor)
 
 settingsLabel = tk.Label(settingsFrame,
                          text="settings",
