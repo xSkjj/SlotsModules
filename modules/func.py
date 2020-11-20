@@ -64,46 +64,42 @@ def spin_anim(ids, n, delay):
         move_down(ids, 8, delay)
 
 
-class AnimThread(threading.Thread):
-    def __init__(self):
-        threading.Thread.__init__(self)
+def spin_process():
+    bal = int(gui.balLabel["text"].split()[1])
+    amt = int(gui.amtInput.get())
+    bal -= amt  # subtract the amount used from the balance
+    gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
+    gui.output["text"] = "spinning..."
+    gui.spinBtn["state"] = "disabled"  # lock the spin button
+    gui.root.update()
 
-    def run(self):
-        bal = int(gui.balLabel["text"].split()[1])
-        amt = int(gui.amtInput.get())
-        bal -= amt  # subtract the amount used from the balance
-        gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
-        gui.output["text"] = "spinning..."
-        gui.spinBtn["state"] = "disabled"  # lock the spin button
-        gui.root.update()
+    slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
 
-        slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
+    for i in range(slotAmt):
+        spin_anim(slot_ids[i:], 10, 10)
 
-        for i in range(slotAmt):
-            spin_anim(slot_ids[i:], 10, 10)
+    # put each symbol in a list
+    slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]
+    # turn the list into a dict {sym: occurrences}
+    slot_values = {sym: slot_values.count(sym) for sym in slot_values}
 
-        # put each symbol in a list
-        slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]
-        # turn the list into a dict {sym: occurrences}
-        slot_values = {sym: slot_values.count(sym) for sym in slot_values}
+    win = 0
+    for key in slot_values:
+        if slot_values[key] >= 2:
+            win += len(symbols) * slot_values[key] / gui.symData[key]["occurrence"] ** 2
+    if round(amt * win) > 0:
+        bal += round(amt * win)
+        gui.output["text"] = f"You spent {amt} and won {round(amt * win)} !"
+    else:
+        gui.output["text"] = f"You spent {amt} and lost everything."
 
-        win = 0
-        for key in slot_values:
-            if slot_values[key] >= 2:
-                win += len(symbols) * slot_values[key] / gui.symData[key]["occurrence"] ** 2
-        if round(amt * win) > 0:
-            bal += round(amt * win)
-            gui.output["text"] = f"You spent {amt} and won {round(amt * win)} !"
-        else:
-            gui.output["text"] = f"You spent {amt} and lost everything."
-
-        gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
-        gui.spinBtn.update()
-        gui.spinBtn["state"] = "normal"  # unlock spin button
+    gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
+    gui.spinBtn.update()
+    gui.spinBtn["state"] = "normal"  # unlock spin button
 
 
 def go():
-    bg = AnimThread()
+    bg = threading.Thread(target=spin_process)
     bg.start()
 
 
