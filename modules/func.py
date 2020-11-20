@@ -109,4 +109,4 @@ def on_close():
 
 
 def show_settings():
-    gui.output["text"] = "Work In Progress"
+    gui.settingsFrame.pack(fill='x', pady=8)

@@ -41,6 +41,7 @@ amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balanc
                          font="Arial 10 bold",
                          fg="white",
                          bg=bgColor)
+amtInputLabel.grid(column=0, row=0, padx=5)
 
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
@@ -49,6 +50,7 @@ amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amou
                     bg="#404040",
                     insertbackground="white",
                     relief="flat")
+amtInput.grid(column=1, row=0, padx=5)
 
 spinBtn = tk.Button(userInputs,  # the button to start the spinning
                     # it's where the magic happens... or the horror
@@ -60,6 +62,7 @@ spinBtn = tk.Button(userInputs,  # the button to start the spinning
                     bg="#7c7",
                     activebackground="#5a5",
                     relief="flat")
+spinBtn.grid(column=2, row=0, padx=5)
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {startBal}",
@@ -76,6 +79,36 @@ settingsBtn = tk.Button(root,
                         bg="#404040",
                         activebackground="#202020",
                         relief="flat")
+
+settingsFrame = tk.Frame(root,  # the container for all settings
+                         bg=bgColor,
+                         highlightbackground=bgSlots)
+
+settingsLabel = tk.Label(settingsFrame,
+                         text="settings",
+                         font="Arial 16 bold",
+                         fg="white",
+                         bg=bgColor)
+settingsLabel.pack()
+
+closeSettingsBtn = tk.Button(settingsFrame,
+                             command=settingsFrame.pack_forget,
+                             text="❌",
+                             font="Arial 12",
+                             fg="#808080",
+                             activeforeground="#505050",
+                             bg="#404040",
+                             activebackground="#202020",
+                             relief="flat")
+closeSettingsBtn.place(x=5, y=5, width=32, height=32)
+
+tempWIPLabel = tk.Label(settingsFrame,
+                        text="Work In Progress",
+                        font="Arial 10 bold",
+                        fg="white",
+                        bg=bgColor)
+tempWIPLabel.pack()
+
 
 sym = {}  # dictionary for each slot
 for i in range(slotAmt):  # has to be in a for loop, since the user can change the amount of slots
