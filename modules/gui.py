@@ -86,8 +86,8 @@ settingsFrame = tk.Frame(root,  # the container for all settings
                          highlightbackground="white")
 
 settingsLabel = tk.Label(settingsFrame,
-                         text="settings",
-                         font="Arial 16 bold",
+                         text="S E T T I N G S",
+                         font="Impact 22",
                          fg="white",
                          bg=bgColor)
 settingsLabel.pack()
