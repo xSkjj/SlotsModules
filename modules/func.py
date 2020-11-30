@@ -75,7 +75,7 @@ def spin_process():
     slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
 
     for i in range(slotAmt):
-        spin_anim(slot_ids[i:], 10, 10)
+        spin_anim(slot_ids[i:], 5, 10)
 
     # put each symbol in a list
     slot_values = [gui.slotCanvas.itemcget(ID, "text") for ID in slot_ids]
