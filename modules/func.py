@@ -3,12 +3,12 @@ from modules import slotAmt, fastSpin, symbols, symData, gui
 import threading
 
 
-def not_valid():
+def not_valid(msg):
     """
     Tell the user that the Input is not a valid number
     """
     gui.amtInput["bg"] = "#b00000"  # change the text background of the output to a red color
-    gui.output["text"] = "Amount is not a valid number"  # change the text of the output-Label
+    gui.output["text"] = msg  # change the text of the output-Label
 
 
 def try_spin(event):
@@ -26,9 +26,9 @@ def spin():
     """
     amt = gui.amtInput.get()
     try:
-        int(amt)  # check if the user's input can be an int...
+        int(amt)  # check if the user's input can be an int
     except ValueError:
-        return not_valid()  # ... if it isn't, run not_valid() and stop
+        return not_valid("Amount is not a valid number")  # change output message and stop the function
     # finally:
     #     print(f"amt = {amt}")
     # if amt == "":
@@ -36,12 +36,11 @@ def spin():
     # for char in amt:
     #     if char not in "0123456789":
     #         return notValid()
-    if int(amt) > int(gui.balLabel["text"].split()[1]):
-        gui.amtInput["bg"] = "#b00000"
-        gui.output["text"] = "You don't have enough credits"
+    if int(amt) > int(gui.balLabel["text"].split()[1]):  # check if the user's input exceeds the balance
+        not_valid("You don't have enough credits")  # change output message; no need for return to stop
     else:
         gui.amtInput["bg"] = "#404040"
-        go()
+        go()  # run the main function to spin
 
 
 def move_down(ids, n, delay):
@@ -109,7 +108,4 @@ def on_close():
 
 
 def show_settings():
-    if gui.settingsFrame.winfo_ismapped():
-        gui.settingsFrame.pack_forget()
-    else:
-        gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())
+    gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())
