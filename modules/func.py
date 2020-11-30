@@ -98,8 +98,7 @@ def spin_process():
 
 
 def go():
-    bg = threading.Thread(target=spin_process)
-    bg.start()
+    threading.Thread(target=spin_process).start()
 
 
 def on_close():
