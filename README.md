@@ -17,5 +17,5 @@ Inspired by t!slots from https://tatsu.gg
 - - -
 just found something out:
 - C -> C++ -> Java -> C#
-  - WTF
+  - WTF ﴾﴿
 
