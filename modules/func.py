@@ -19,10 +19,8 @@ def try_spin(_):
 def spin():
     """
     Run the function to spin with the user's input ->
-      -> if it isn't a valid integer number, run notValid()
-      -> if it exceeds the user's balance ->
-        -> change the text background of the output to a red color
-        -> change the text of the output-Label
+      -> if it isn't a valid integer number, run not_valid()
+      -> if it exceeds the user's balance, run not_valid()
     """
     amt = gui.amtInput.get()
     try:
@@ -85,7 +83,7 @@ def spin_process():
     win = 0
     for key in slot_values:
         if slot_values[key] >= 2:
-            win += len(symbols) * slot_values[key] / gui.symData[key]["occurrence"] ** 2
+            win += len(symbols) * slot_values[key] / symData[key]["occurrence"] ** 2
     if round(amt * win) > 0:
         bal += round(amt * win)
         gui.output["text"] = f"You spent {amt} and won {round(amt * win)} !"
