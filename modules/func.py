@@ -11,7 +11,7 @@ def not_valid(msg):
     gui.output["text"] = msg  # change the text of the output-Label
 
 
-def try_spin(event):
+def try_spin(_):
     if gui.spinBtn["state"] == "normal":
         spin()
 
