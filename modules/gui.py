@@ -9,8 +9,8 @@ root = tk.Tk()
 root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the window
 root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
-root.minsize(480, 480)
-root["background"] = bgColor  # set the background of the window
+root.minsize(480, 480)  # set minimum width and height of the window
+root["background"] = bgColor  # set the background color of the window
 
 # define elements and set their properties
 header = tk.Label(root,  # "SLOTS" title
@@ -83,10 +83,12 @@ customisationSettings = settings.Section(settingsFrame,
 bgColorSetting = settings.Section(customisationSettings,
                                   text="Background color",
                                   grid=True)
+settings.ColorPicker(bgColorSetting, bgColor)
 
 bgSlotsSetting = settings.Section(customisationSettings,
                                   text="Slots background",
                                   grid=True)
+settings.ColorPicker(bgSlotsSetting, bgSlots)
 
 gameSettings = settings.Section(settingsFrame,
                                 text="Game Settings")
@@ -96,8 +98,14 @@ slotAmtSetting = settings.Section(gameSettings,
                                   grid=True)
 
 fastSpinSetting = settings.Section(gameSettings,
-                                   text="Fast spin",
+                                   text="  Fast spin",
                                    grid=True)
+tk.Checkbutton(fastSpinSetting,
+               text="test",
+               bg=bgColor,
+               activeforeground="white",
+               activebackground=bgColor,
+               ).grid(column=1, row=0)
 
 closeSettingsBtn = colorbutton.ColorButton(settingsFrame, "grey",
                                            command=settingsFrame.place_forget,

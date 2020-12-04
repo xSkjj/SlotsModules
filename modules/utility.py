@@ -1,4 +1,5 @@
 from modules import gui
+from tkinter import colorchooser
 
 
 def on_close():
@@ -8,3 +9,8 @@ def on_close():
 
 def show_settings():
     gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())
+
+
+def change_color():
+    color = colorchooser.askcolor()
+    print(color[1])
