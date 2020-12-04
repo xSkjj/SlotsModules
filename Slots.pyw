@@ -14,7 +14,7 @@ gui.balLabel.pack(pady=10)
 gui.closeSettingsBtn.place(width=40, height=40)
 
 # bind functions to events
-gui.root.bind("<Return>", gui.func.try_spin)
+gui.root.bind("<Return>", gui.spin.try_spin)
 gui.root.protocol("WM_DELETE_WINDOW", gui.utility.on_close)
 
 # keep the window open

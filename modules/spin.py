@@ -23,17 +23,11 @@ def spin():
       -> if it exceeds the user's balance, run not_valid()
     """
     amt = gui.amtInput.get()
-    try:
-        int(amt)  # check if the user's input can be an int
-    except ValueError:
-        return not_valid("Amount is not a valid number")  # change output message and stop the function
-    # finally:
-    #     print(f"amt = {amt}")
-    # if amt == "":
-    #     return notValid()
-    # for char in amt:
-    #     if char not in "0123456789":
-    #         return notValid()
+    if amt == "":
+        return not_valid("Please input a Number")
+    for char in amt:
+        if char not in "0123456789":
+            return not_valid("Amount is not a number")
     if int(amt) > int(gui.balLabel["text"].split()[1]):  # check if the user's input exceeds the balance
         not_valid("You don't have enough credits")  # change output message; no need for return to stop
     else:
@@ -53,12 +47,12 @@ def spin_anim(ids, n, delay):
     if fastSpin:
         delay, n = 1, 1
     for i in range(n):
-        move_down(ids, 7, delay)
+        move_down(ids, 8, delay)
         for ID in ids:
-            gui.slotCanvas.move(ID, 0, -150)
+            gui.slotCanvas.move(ID, 0, -170)
             rand_sym = symbols[randint(0, len(symbols) - 1)]
             gui.slotCanvas.itemconfig(ID, text=rand_sym, fill=symData[rand_sym]["color"])
-        move_down(ids, 8, delay)
+        move_down(ids, 9, delay)
 
 
 def spin_process():
@@ -97,5 +91,3 @@ def spin_process():
 
 def go():
     threading.Thread(target=spin_process).start()
-
-
