@@ -78,12 +78,6 @@ settingsLabel = tk.Label(settingsFrame,
 settingsLabel.pack()
 
 
-tempWIPLabel = tk.Label(settingsFrame,
-                        text="Work In Progress",
-                        font="Arial 10 bold",
-                        fg="white",
-                        bg=bgColor)
-tempWIPLabel.pack()
 
 closeSettingsBtn = colorbutton.ColorButton(settingsFrame, "grey",
                                            command=settingsFrame.place_forget,
