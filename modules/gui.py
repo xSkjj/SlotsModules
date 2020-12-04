@@ -1,7 +1,7 @@
 import tkinter as tk
 from random import randint
 from modules import bgColor, bgSlots, slotAmt, symData, symbols, startBal, func
-from classes import slot
+from classes import slot, colorbutton, settings
 
 root = tk.Tk()
 
@@ -49,16 +49,10 @@ amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amou
                     insertbackground="white",
                     relief="flat")
 
-spinBtn = tk.Button(userInputs,  # the button to start the spinning
-                    # it's where the magic happens... or the horror
-                    command=func.spin,
-                    text="spin",
-                    font="Arial 10 bold",
-                    fg="#050",
-                    activeforeground="#030",
-                    bg="#7c7",
-                    activebackground="#5a5",
-                    relief="flat")
+spinBtn = colorbutton.ColorButton(userInputs, "green",  # the button to start the spinning
+                                  command=spin.spin,
+                                  text="spin",
+                                  font="Arial 20 bold")
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {startBal}",
@@ -66,15 +60,10 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     fg="gold",
                     bg=bgColor)
 
-settingsBtn = tk.Button(root,
-                        command=func.show_settings,
-                        text="⚙",
-                        font="Arial 12",
-                        fg="#808080",
-                        activeforeground="#505050",
-                        bg="#404040",
-                        activebackground="#202020",
-                        relief="flat")
+settingsBtn = colorbutton.ColorButton(root, "grey",
+                                      command=utility.show_settings,
+                                      text="⚙",
+                                      font="Arial 20")
 
 settingsFrame = tk.Frame(root,  # the container for all settings
                          bg=bgColor,
@@ -88,15 +77,6 @@ settingsLabel = tk.Label(settingsFrame,
                          bg=bgColor)
 settingsLabel.pack()
 
-closeSettingsBtn = tk.Button(settingsFrame,
-                             command=settingsFrame.place_forget,
-                             text="❌",
-                             font="Arial 12",
-                             fg="#808080",
-                             activeforeground="#505050",
-                             bg="#404040",
-                             activebackground="#202020",
-                             relief="flat")
 
 tempWIPLabel = tk.Label(settingsFrame,
                         text="Work In Progress",
@@ -105,6 +85,10 @@ tempWIPLabel = tk.Label(settingsFrame,
                         bg=bgColor)
 tempWIPLabel.pack()
 
+closeSettingsBtn = colorbutton.ColorButton(settingsFrame, "grey",
+                                           command=settingsFrame.place_forget,
+                                           text="✕",
+                                           font="Arial 20")
 
 sym = {}  # dictionary for each slot
 for i in range(slotAmt):  # has to be in a for loop, since the user can change the amount of slots
