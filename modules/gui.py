@@ -77,7 +77,27 @@ settingsLabel = tk.Label(settingsFrame,
                          bg=bgColor)
 settingsLabel.pack()
 
+customisationSettings = settings.Section(settingsFrame,
+                                         text="Customisation")
 
+bgColorSetting = settings.Section(customisationSettings,
+                                  text="Background color",
+                                  grid=True)
+
+bgSlotsSetting = settings.Section(customisationSettings,
+                                  text="Slots background",
+                                  grid=True)
+
+gameSettings = settings.Section(settingsFrame,
+                                text="Game Settings")
+
+slotAmtSetting = settings.Section(gameSettings,
+                                  text="Slot amount",
+                                  grid=True)
+
+fastSpinSetting = settings.Section(gameSettings,
+                                   text="Fast spin",
+                                   grid=True)
 
 closeSettingsBtn = colorbutton.ColorButton(settingsFrame, "grey",
                                            command=settingsFrame.place_forget,
