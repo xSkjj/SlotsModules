@@ -5,31 +5,29 @@ from classes import slot
 
 root = tk.Tk()
 
-icon = ".\\assets\\icon.ico"  # icon  for the window
-title = "Slots"  # title for the window
-
 # apply window settings
-root.iconbitmap(icon)  # set the icon in the top left of the window
-root.title(title)  # set window title of the title bar
+root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the window
+root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
+root.minsize(480, 480)
 root["background"] = bgColor  # set the background of the window
 
-# make elements and set their properties
-header = tk.Label(root,  # vvv "SLOTS" title
+# define elements and set their properties
+header = tk.Label(root,  # "SLOTS" title
                   text="$  L  O  T  $",
-                  font="Impact 24",
+                  font="Impact 48",
                   fg="gold",
                   bg=bgColor)
 
 slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
-                       width=slotAmt * 100,
-                       height=100,
+                       width=slotAmt * 120,
+                       height=120,
                        bg=bgSlots,
                        highlightthickness=0)
 
 output = tk.Label(root,  # Label for various text strings to tell the user something
                   text="How many credits would you like to use?",
-                  font="Consolas 10 bold",
+                  font="Consolas 14",
                   fg="white",
                   bg="black")
 
@@ -38,7 +36,7 @@ userInputs = tk.Frame(root,  # a set of widgets for user interaction
 
 amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balance amount the user wants to use
                          text="Amount:",
-                         font="Arial 10 bold",
+                         font="Arial 16 bold",
                          fg="white",
                          bg=bgColor)
 amtInputLabel.grid(column=0, row=0, padx=5)
@@ -46,6 +44,7 @@ amtInputLabel.grid(column=0, row=0, padx=5)
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
                     textvariable=tk.StringVar(value=0),
+                    font="Consolas 16",
                     fg="white",
                     bg="#404040",
                     insertbackground="white",
@@ -66,7 +65,7 @@ spinBtn.grid(column=2, row=0, padx=5)
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {startBal}",
-                    font="Arial 10 bold",
+                    font="Arial 16 bold",
                     fg="gold",
                     bg=bgColor)
 
@@ -82,12 +81,12 @@ settingsBtn = tk.Button(root,
 
 settingsFrame = tk.Frame(root,  # the container for all settings
                          bg=bgColor,
-                         highlightthickness=2,
+                         highlightthickness=4,
                          highlightbackground="white")
 
 settingsLabel = tk.Label(settingsFrame,
-                         text="S E T T I N G S",
-                         font="Impact 22",
+                         text="SETTINGS",
+                         font="Impact 48",
                          fg="white",
                          bg=bgColor)
 settingsLabel.pack()

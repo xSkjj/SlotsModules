@@ -1,12 +1,14 @@
 from modules import gui
 
 # display the elements
-gui.header.pack()
-gui.settingsBtn.place(x=5, y=5, width=32, height=32)
-gui.slotCanvas.pack(padx=4, pady=4)
-gui.output.pack(fill='x', padx=8, pady=(24, 4))
+gui.header.pack(pady=4)
+gui.settingsBtn.place(x=4, y=4, width=40, height=40)
+gui.slotCanvas.pack(padx=10, pady=(20, 40))
+gui.output.pack(fill='x', padx=20, pady=25)
 gui.userInputs.pack()
-gui.balLabel.pack()
+gui.balLabel.pack(pady=10)
+
+gui.closeSettingsBtn.place(width=40, height=40)
 
 # bind functions to events
 gui.root.bind("<Return>", gui.func.try_spin)
