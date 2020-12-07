@@ -107,7 +107,7 @@ tk.Checkbutton(fastSpinSetting,
                ).grid(column=1, row=0)
 
 closeSettingsBtn = colorbutton.ColorButton(settingsFrame, "grey",
-                                           command=settingsFrame.place_forget,
+                                           command=utility.hide_settings,
                                            text="✕",
                                            font="Arial 20")
 

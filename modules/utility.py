@@ -22,3 +22,7 @@ def change_color(entry, key):
     config["customisation"][key] = color
     with open("settings.ini", 'w') as settings:
         config.write(settings)
+
+
+def hide_settings():
+    gui.settingsFrame.place_forget()
