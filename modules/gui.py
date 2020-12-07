@@ -83,12 +83,12 @@ customisationSettings = settings.Section(settingsFrame,
 bgColorSetting = settings.Section(customisationSettings,
                                   text="Background color",
                                   grid=True)
-settings.ColorPicker(bgColorSetting, bgColor)
+bgColorPicker = settings.ColorPicker(bgColorSetting, bgColor)
 
 bgSlotsSetting = settings.Section(customisationSettings,
                                   text="Slots background",
                                   grid=True)
-settings.ColorPicker(bgSlotsSetting, bgSlots)
+bgSlotsPicker = settings.ColorPicker(bgSlotsSetting, bgSlots)
 
 gameSettings = settings.Section(settingsFrame,
                                 text="Game Settings")

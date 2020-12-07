@@ -19,18 +19,18 @@ class Section(tk.Frame):
 class ColorPicker(tk.Frame):
     def __init__(self, master, default_value=0):
         tk.Frame.__init__(self, master, bg=bgColor)
-        tk.Entry(self,
-                 textvariable=tk.StringVar(value=default_value),
-                 font="Consolas 16",
-                 fg="white",
-                 bg="#404040",
-                 insertbackground="white",
-                 relief="flat",
-                 width=7,
-                 ).grid(column=0, row=0)
-        colorbutton.ColorButton(self, "grey",
-                                command=utility.change_color,
-                                text="pick",
-                                font="Arial 10 bold",
-                                ).grid(column=1, row=0)
+        self.entry = tk.Entry(self,
+                              textvariable=tk.StringVar(value=default_value),
+                              font="Consolas 16",
+                              fg="white",
+                              bg="#404040",
+                              insertbackground="white",
+                              relief="flat",
+                              width=7)
+        self.entry.grid(column=0, row=0)
+        self.button = colorbutton.ColorButton(self, "grey",
+                                              command=lambda: utility.change_color(self.entry),
+                                              text="pick",
+                                              font="Arial 10 bold")
+        self.button.grid(column=1, row=0)
         self.grid(column=1, row=0)

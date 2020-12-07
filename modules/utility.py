@@ -11,6 +11,7 @@ def show_settings():
     gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())
 
 
-def change_color():
-    color = colorchooser.askcolor()
-    print(color[1])
+def change_color(entry):
+    _, color = colorchooser.askcolor()
+    entry.delete(0, "end")
+    entry.insert(0, color)
