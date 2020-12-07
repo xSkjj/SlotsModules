@@ -83,12 +83,12 @@ customisationSettings = settings.Section(settingsFrame,
 bgColorSetting = settings.Section(customisationSettings,
                                   text="Background color",
                                   grid=True)
-bgColorPicker = settings.ColorPicker(bgColorSetting, bgColor)
+bgColorPicker = settings.ColorPicker(bgColorSetting, "window_background", bgColor)
 
 bgSlotsSetting = settings.Section(customisationSettings,
                                   text="Slots background",
                                   grid=True)
-bgSlotsPicker = settings.ColorPicker(bgSlotsSetting, bgSlots)
+bgSlotsPicker = settings.ColorPicker(bgSlotsSetting, "window_background", bgSlots)
 
 gameSettings = settings.Section(settingsFrame,
                                 text="Game Settings")
@@ -101,7 +101,6 @@ fastSpinSetting = settings.Section(gameSettings,
                                    text="  Fast spin",
                                    grid=True)
 tk.Checkbutton(fastSpinSetting,
-               text="test",
                bg=bgColor,
                activeforeground="white",
                activebackground=bgColor,

@@ -1,7 +1,7 @@
 from configparser import ConfigParser
 
 config = ConfigParser()
-config.read(".\\settings.ini")  # get window settings from settings.ini
+config.read("settings.ini")  # get window settings from settings.ini
 
 bgColor = config.get("customisation", "window_background")
 bgSlots = config.get("customisation", "slots_background")
