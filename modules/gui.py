@@ -28,7 +28,7 @@ slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
 output = tk.Label(root,  # Label for various text strings to tell the user something
                   text="How many credits would you like to use?",
                   font="Consolas 14",
-                  fg="green",
+                  fg="#41ff00",
                   bg="black")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction

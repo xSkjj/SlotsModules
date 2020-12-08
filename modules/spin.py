@@ -24,9 +24,9 @@ def spin():
     """
     amt = gui.amtInput.get()
     if amt == "":
-        return not_valid("Please input a Number")
+        return not_valid("Please input a number")
     elif amt == '0':
-        return not_valid("No risk, no fun!")
+        return not_valid("Please use at least 1 (one) credit")
     for char in amt:
         if char not in "0123456789":
             return not_valid("Amount is not a number")
@@ -82,9 +82,10 @@ def spin_process():
             win += len(symbols) * slot_values[key] / symData[key]["occurrence"] ** 2
     if round(amt * win) > 0:
         bal += round(amt * win)
-        gui.output["text"] = f"You spent {amt} and won {round(amt * win)} !"
+        gui.output["text"] = f"You spent {amt} credit{'s' if amt > 1 else ''}" \
+                             f" and won {round(amt * win)} credit{'s' if round(amt * win) > 1 else ''}!"
     else:
-        gui.output["text"] = f"You spent {amt} and lost everything."
+        gui.output["text"] = f"You spent {amt} credit{'s' if amt > 1 else ''} and lost everything."
 
     gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
     gui.spinBtn.update()
