@@ -92,4 +92,4 @@ def spin_process():
 
 
 def go():
-    threading.Thread(target=spin_process).start()
+    threading.Thread(target=spin_process, daemon=True).start()

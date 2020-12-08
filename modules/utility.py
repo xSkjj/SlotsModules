@@ -4,7 +4,6 @@ from configparser import ConfigParser
 
 
 def on_close():
-    # insert something that kills still running threads
     gui.root.destroy()
 
 
