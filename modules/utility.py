@@ -1,6 +1,6 @@
-from modules import gui
+from modules import gui, ConfigParser
 from tkinter import colorchooser
-from configparser import ConfigParser
+import threading
 
 
 def on_close():
@@ -8,13 +8,20 @@ def on_close():
 
 
 def show_settings():
+    gui.amtInput.unbind("<Return>")
     gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())
 
 
-def change_color(entry, key):
+def hide_settings():
+    gui.amtInput.bind("<Return>", gui.spin.try_spin)
+    gui.settingsFrame.place_forget()
+
+
+def change_color(btn, key):
     _, color = colorchooser.askcolor()
-    entry.delete(0, "end")
-    entry.insert(0, color)
+    if color is None:
+        return
+    btn["bg"] = color
 
     config = ConfigParser()
     config.read("settings.ini")
@@ -23,5 +30,5 @@ def change_color(entry, key):
         config.write(settings)
 
 
-def hide_settings():
-    gui.settingsFrame.place_forget()
+def rgb(r, g, b):
+    return "#%02x%02x%02x" % (r, g, b)
