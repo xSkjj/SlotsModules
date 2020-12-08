@@ -17,10 +17,19 @@ gui.bgColorPicker.grid(column=1, row=0)
 gui.bgSlotsPicker.grid(column=1, row=0)
 gui.fastSpinCheck.grid(column=1, row=0)
 
+# May do:
+#
+# can change all settings while still running
+# Save and exit, cancel, apply buttons
+# main menu and stuff
+# class App(tk.Frame)
+# improve performance of spin animation
+#
+# TODO: add remaining settings functionality
+#
 
 # bind functions to events
-gui.amtInput.bind("<Return>", gui.spin.try_spin)
-gui.root.protocol("WM_DELETE_WINDOW", gui.utility.on_close)
+gui.amtInput.bind("<Return>", gui.spin.try_spin)  # same as clicking the spin button
 
 # keep the window open
 gui.root.mainloop()

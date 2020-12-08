@@ -1,10 +1,5 @@
 from modules import gui, ConfigParser
 from tkinter import colorchooser
-import threading
-
-
-def on_close():
-    gui.root.destroy()
 
 
 def show_settings():
