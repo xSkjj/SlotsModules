@@ -1,6 +1,6 @@
 import tkinter as tk
 from random import randint
-from modules import bgColor, bgSlots, slotAmt, symData, symbols, startBal, spin, utility
+from modules import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin, spin, utility
 from classes import slot, colorbutton, settings
 
 root = tk.Tk()
@@ -75,6 +75,7 @@ settingsLabel = tk.Label(settingsFrame,
                          font="Impact 48",
                          fg="white",
                          bg=bgColor)
+settingsLabel.pack()
 
 customisationSettings = settings.Section(settingsFrame,
                                          text="Customisation")
@@ -108,7 +109,9 @@ fastSpinSetting = settings.Section(gameSettings,
                                    text="  Fast spin",
                                    grid=True)
 
+check = tk.BooleanVar(value=fastSpin)
 fastSpinCheck = tk.Checkbutton(fastSpinSetting,
+                               var=check,
                                bg=bgColor,
                                activeforeground="white",
                                activebackground=bgColor)

@@ -64,6 +64,7 @@ def spin_process():
     gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
     gui.output["text"] = "spinning..."
     gui.spinBtn["state"] = "disabled"  # lock the spin button
+    gui.spinBtn["bg"] = gui.spinBtn.bg
     gui.root.update()
 
     slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
