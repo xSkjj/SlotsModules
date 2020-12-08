@@ -12,6 +12,11 @@ gui.userInputs.pack()
 gui.balLabel.pack(pady=10)
 
 gui.closeSettingsBtn.place(width=40, height=40)
+gui.settingsLabel.pack()
+gui.bgColorPicker.grid(column=1, row=0)
+gui.bgSlotsPicker.grid(column=1, row=0)
+gui.fastSpinCheck.grid(column=1, row=0)
+
 
 # bind functions to events
 gui.amtInput.bind("<Return>", gui.spin.try_spin)

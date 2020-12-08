@@ -28,7 +28,7 @@ slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
 output = tk.Label(root,  # Label for various text strings to tell the user something
                   text="How many credits would you like to use?",
                   font="Consolas 14",
-                  fg="white",
+                  fg="green",
                   bg="black")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction
@@ -42,7 +42,7 @@ amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balanc
 
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
-                    textvariable=tk.StringVar(value=0),
+                    textvariable=tk.StringVar(value=1),
                     font="Consolas 16",
                     fg="white",
                     bg="#404040",
@@ -75,7 +75,6 @@ settingsLabel = tk.Label(settingsFrame,
                          font="Impact 48",
                          fg="white",
                          bg=bgColor)
-settingsLabel.pack()
 
 customisationSettings = settings.Section(settingsFrame,
                                          text="Customisation")
@@ -83,12 +82,20 @@ customisationSettings = settings.Section(settingsFrame,
 bgColorSetting = settings.Section(customisationSettings,
                                   text="Background color",
                                   grid=True)
-bgColorPicker = settings.ColorPicker(bgColorSetting, "window_background", bgColor)
+bgColorPicker = tk.Button(bgColorSetting,
+                          text="pick",
+                          bg=bgColor,
+                          command=lambda: utility.change_color(bgColorPicker, "window_background"),
+                          font="Arial 10 bold")
 
 bgSlotsSetting = settings.Section(customisationSettings,
                                   text="Slots background",
                                   grid=True)
-bgSlotsPicker = settings.ColorPicker(bgSlotsSetting, "window_background", bgSlots)
+bgSlotsPicker = tk.Button(bgSlotsSetting,
+                          text="pick",
+                          bg=bgSlots,
+                          command=lambda: utility.change_color(bgSlotsPicker, "slots_background"),
+                          font="Arial 10 bold")
 
 gameSettings = settings.Section(settingsFrame,
                                 text="Game Settings")
@@ -100,11 +107,11 @@ slotAmtSetting = settings.Section(gameSettings,
 fastSpinSetting = settings.Section(gameSettings,
                                    text="  Fast spin",
                                    grid=True)
-tk.Checkbutton(fastSpinSetting,
-               bg=bgColor,
-               activeforeground="white",
-               activebackground=bgColor,
-               ).grid(column=1, row=0)
+
+fastSpinCheck = tk.Checkbutton(fastSpinSetting,
+                               bg=bgColor,
+                               activeforeground="white",
+                               activebackground=bgColor)
 
 closeSettingsBtn = colorbutton.ColorButton(settingsFrame, "grey",
                                            command=utility.hide_settings,
