@@ -25,6 +25,8 @@ def spin():
     amt = gui.amtInput.get()
     if amt == "":
         return not_valid("Please input a Number")
+    elif amt == '0':
+        return not_valid("No risk, no fun!")
     for char in amt:
         if char not in "0123456789":
             return not_valid("Amount is not a number")
@@ -47,12 +49,12 @@ def spin_anim(ids, n, delay):
     if fastSpin:
         delay, n = 1, 1
     for i in range(n):
-        move_down(ids, 8, delay)
+        move_down(ids, 6, delay)
         for ID in ids:
-            gui.slotCanvas.move(ID, 0, -170)
+            gui.slotCanvas.move(ID, 0, -130)
             rand_sym = symbols[randint(0, len(symbols) - 1)]
             gui.slotCanvas.itemconfig(ID, text=rand_sym, fill=symData[rand_sym]["color"])
-        move_down(ids, 9, delay)
+        move_down(ids, 7, delay)
 
 
 def spin_process():
