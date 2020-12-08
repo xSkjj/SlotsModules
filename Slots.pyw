@@ -12,9 +12,10 @@ gui.userInputs.pack()
 gui.balLabel.pack(pady=10)
 
 gui.closeSettingsBtn.place(width=40, height=40)
-gui.bgColorPicker.grid(column=1, row=0)
-gui.bgSlotsPicker.grid(column=1, row=0)
-gui.fastSpinCheck.grid(column=1, row=0)
+gui.bgColorPicker.grid(column=1, row=0, sticky="ew")
+gui.bgSlotsPicker.grid(column=1, row=0, sticky="ew")
+gui.slotAmtSlider.grid(column=1, row=0, sticky="ew")
+gui.fastSpinCheck.grid(column=1, row=0, sticky="ew")
 
 # May do:
 #

@@ -87,7 +87,7 @@ bgColorPicker = tk.Button(bgColorSetting,
                           text="pick",
                           bg=bgColor,
                           command=lambda: utility.change_color(bgColorPicker, "window_background"),
-                          font="Arial 10 bold")
+                          font="Consolas 12 bold")
 
 bgSlotsSetting = settings.Section(customisationSettings,
                                   text="Slots background",
@@ -96,7 +96,7 @@ bgSlotsPicker = tk.Button(bgSlotsSetting,
                           text="pick",
                           bg=bgSlots,
                           command=lambda: utility.change_color(bgSlotsPicker, "slots_background"),
-                          font="Arial 10 bold")
+                          font="Consolas 12 bold")
 
 gameSettings = settings.Section(settingsFrame,
                                 text="Game Settings")
@@ -104,9 +104,10 @@ gameSettings = settings.Section(settingsFrame,
 slotAmtSetting = settings.Section(gameSettings,
                                   text="Slot amount",
                                   grid=True)
+slotAmtSlider = settings.TextSlider(slotAmtSetting)
 
 fastSpinSetting = settings.Section(gameSettings,
-                                   text="  Fast spin",
+                                   text="Fast spin",
                                    grid=True)
 
 check = tk.BooleanVar(value=fastSpin)
