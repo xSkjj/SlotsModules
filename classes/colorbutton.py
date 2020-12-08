@@ -23,10 +23,10 @@ class ColorButton(tk.Button):
         bg = colors[color]["bg"]
         active_bg = colors[color]["active_bg"]
 
-        tk.Button.__init__(self, master,
-                           fg=fg,
-                           activeforeground=active_fg,
-                           bg=bg,
-                           activebackground=active_bg,
-                           relief="flat",
-                           **kwargs)
+        super().__init__(master,
+                         fg=fg,
+                         activeforeground=active_fg,
+                         bg=bg,
+                         activebackground=active_bg,
+                         relief="flat",
+                         **kwargs)
