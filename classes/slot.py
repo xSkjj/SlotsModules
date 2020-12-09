@@ -2,7 +2,7 @@ class Slot:
     def __init__(self, canvas, nth):
         self.canvas = canvas
         self.symbol = self.canvas.create_text(nth * 120 + 60, 60,
-                                              font=("Consolas", 56))
+                                              font="Consolas 56")
         self.bg = self.canvas.create_rectangle(nth * 120 + 12, 12,
                                                nth * 120 + 108, 108,
                                                width=24,
