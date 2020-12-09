@@ -50,7 +50,7 @@ amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amou
                     insertbackground="white",
                     relief="flat")
 
-spinBtn = tkc.Button(userInputs, "green",  # the button to start the spinning
+spinBtn = tkc.Button(userInputs, "#77cc77",  # the button to start the spinning
                      command=spin.spin,
                      text="spin",
                      font="Arial 20 bold")
@@ -61,7 +61,7 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     fg="gold",
                     bg=bgColor)
 
-settingsBtn = tkc.Button(root, "grey",
+settingsBtn = tkc.Button(root, "#404040",
                          command=utility.show_settings,
                          text="⚙",
                          font="Arial 20")
