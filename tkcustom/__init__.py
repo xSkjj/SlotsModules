@@ -5,31 +5,15 @@ from misc import utility, bgColor
 
 class Button(tk.Button):
     def __init__(self, master, color, **kwargs):
-        colors = {
-            "grey": {
-                "bg": "#404040",
-                "fg": "#808080",
-                "active_bg": "#202020",
-                "active_fg": "#505050",
-            },
-            "green": {
-                "bg": "#77cc77",
-                "fg": "#005500",
-                "active_bg": "#55aa55",
-                "active_fg": "#003300",
-            },
-        }
-
-        self.bg = colors[color]["bg"]
-        self.fg = colors[color]["fg"]
-        self.active_bg = colors[color]["active_bg"]
-        self.active_fg = colors[color]["active_fg"]
-
+        self.bg = color
+        self.fg = color
+        self.abg = color
+        self.afg = color
         super().__init__(master,
-                         fg=self.fg,
-                         activeforeground=self.active_fg,
                          bg=self.bg,
-                         activebackground=self.active_bg,
+                         fg=self.fg,
+                         activebackground=self.abg,
+                         activeforeground=self.afg,
                          relief="flat",
                          **kwargs)
 
