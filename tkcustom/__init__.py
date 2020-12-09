@@ -22,8 +22,8 @@ class Button(tk.Button):
 
     def on_enter(self, _):
         if self["state"] != "disabled":
-            self["bg"] = utility.light_value(self.bg, 1.2)
-            self["fg"] = utility.light_value(self.fg, 1.2)
+            self["bg"] = utility.set_brightness(self.bg, 1.2)
+            self["fg"] = utility.set_brightness(self.fg, 1.2)
 
     def on_leave(self, _):
         self["bg"] = self.bg

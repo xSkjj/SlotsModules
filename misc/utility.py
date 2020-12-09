@@ -33,9 +33,17 @@ def rgb(r, g, b):
     return "#%02x%02x%02x" % (r, g, b)
 
 
-def light_value(hx, percent):
+def is_bright(color):
+    """
+    Returns True if the color average is > 127 -> a bright color
+    """
+    li = to_rgb(color) if type(color) == str else color
+    return 127 < sum(li) / len(li)
+
+
+def set_brightness(hx, value):
     rgb_list = to_rgb(hx)
     for i, c in enumerate(rgb_list):
-        rgb_list[i] = min(max(round(c*percent), 0), 255)
+        rgb_list[i] = min(max(round(c + value), 0), 255)
     r, g, b = rgb_list
     return rgb(r, g, b)
