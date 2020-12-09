@@ -79,14 +79,12 @@ customisationSettings = tkc.Section(settingsFrame,  # section for customisation
 bgColorSetting = tkc.Section(customisationSettings,
                              text="Background color",
                              grid=True)
-bgColorPicker = tkc.ColorPicker(bgColorSetting, bgColor,
-                                setting="window_background")
+bgColorPicker = tkc.ColorChooser(bgColorSetting, bgColor)
 
 bgSlotsSetting = tkc.Section(customisationSettings,
                              text="Slots background",
                              grid=True)
-bgSlotsPicker = tkc.Button(bgSlotsSetting, bgSlots,
-                           command=lambda: utility.change_color(bgSlotsPicker, "slots_background"))
+bgSlotsPicker = tkc.Button(bgSlotsSetting, bgSlots)
 
 gameSettings = tkc.Section(settingsFrame,
                            text="Game Settings")
