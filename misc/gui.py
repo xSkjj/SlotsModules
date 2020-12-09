@@ -73,7 +73,7 @@ settingsFrame = tkc.Section(root,  # the container for all settings
                             highlightbackground="white")
 settingsFrame.label["font"] = "Impact 48"
 
-customisationSettings = tkc.Section(settingsFrame,
+customisationSettings = tkc.Section(settingsFrame,  # section for customisation
                                     text="Customisation")
 
 bgColorSetting = tkc.Section(customisationSettings,
