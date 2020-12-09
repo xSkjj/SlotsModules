@@ -1,5 +1,4 @@
 from misc import gui, ConfigParser
-from tkinter import colorchooser
 
 
 def show_settings():
@@ -12,15 +11,10 @@ def hide_settings():
     gui.settingsFrame.place_forget()
 
 
-def change_color(btn, key):
-    _, color = colorchooser.askcolor()
-    if color is None:
-        return
-    btn["bg"] = color
-
+def change_setting(sect, key, value):
     config = ConfigParser()
     config.read("settings.ini")
-    config["customisation"][key] = color
+    config[sect][key] = value
     with open("settings.ini", 'w') as settings:
         config.write(settings)
 
@@ -38,7 +32,7 @@ def is_bright(color):
     Returns True if the color average is > 127 -> a bright color
     """
     li = to_rgb(color) if type(color) == str else color
-    return 127 < sum(li) / len(li)
+    return 128 <= sum(li) / 3
 
 
 def set_brightness(hx, value):
