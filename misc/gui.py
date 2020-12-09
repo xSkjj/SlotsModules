@@ -113,7 +113,7 @@ fastSpinCheck = tk.Checkbutton(fastSpinSetting,
                                activeforeground="white",
                                activebackground=bgColor)
 
-closeSettingsBtn = tkc.Button(settingsFrame, "grey",
+closeSettingsBtn = tkc.Button(settingsFrame, "#404040",
                               command=utility.hide_settings,
                               text="✕",
                               font="Arial 20")
