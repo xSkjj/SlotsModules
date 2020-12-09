@@ -25,5 +25,17 @@ def change_color(btn, key):
         config.write(settings)
 
 
+def to_rgb(hx):
+    return [int(hx[i] + hx[i + 1], 16) for i in range(1, 7, 2)]
+
+
 def rgb(r, g, b):
     return "#%02x%02x%02x" % (r, g, b)
+
+
+def light_value(hx, percent):
+    rgb_list = to_rgb(hx)
+    for i, c in enumerate(rgb_list):
+        rgb_list[i] = min(max(round(c*percent), 0), 255)
+    r, g, b = rgb_list
+    return rgb(r, g, b)

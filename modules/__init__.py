@@ -6,14 +6,8 @@ config.read("settings.ini")  # get window settings from settings.ini
 bgColor = config.get("customisation", "window_background")
 bgSlots = config.get("customisation", "slots_background")
 
-slotAmount = config.getint("game_settings", "slot_amount")
+slotAmt = min(max(config.getint("game_settings", "slot_amount"), 2), 7)
 fastSpin = config.getboolean("game_settings", "fast_spin")
-
-minSlots = 2
-maxSlots = 7
-slotAmt = minSlots if slotAmount < minSlots \
-    else maxSlots if slotAmount > maxSlots \
-    else slotAmount
 
 symData = {
     "🍒": {"color": "#790604", "occurrence": 15},

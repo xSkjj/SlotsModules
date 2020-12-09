@@ -1,4 +1,5 @@
 import tkinter as tk
+from modules.utility import light_value as lv
 
 
 class ColorButton(tk.Button):
@@ -7,16 +8,12 @@ class ColorButton(tk.Button):
             "grey": {
                 "bg": "#404040",
                 "fg": "#808080",
-                "hover_bg": "#505050",
-                "hover_fg": "#909090",
                 "active_bg": "#202020",
                 "active_fg": "#505050",
             },
             "green": {
                 "bg": "#77cc77",
                 "fg": "#005500",
-                "hover_bg": "#88dd88",
-                "hover_fg": "#006600",
                 "active_bg": "#55aa55",
                 "active_fg": "#003300",
             },
@@ -24,8 +21,6 @@ class ColorButton(tk.Button):
 
         self.bg = colors[color]["bg"]
         self.fg = colors[color]["fg"]
-        self.hover_bg = colors[color]["hover_bg"]
-        self.hover_fg = colors[color]["hover_fg"]
         self.active_bg = colors[color]["active_bg"]
         self.active_fg = colors[color]["active_fg"]
 
@@ -42,8 +37,8 @@ class ColorButton(tk.Button):
 
     def on_enter(self, _):
         if self["state"] != "disabled":
-            self["bg"] = self.hover_bg
-            self["fg"] = self.hover_fg
+            self["bg"] = lv(self.bg, 1.2)
+            self["fg"] = lv(self.fg, 1.2)
 
     def on_leave(self, _):
         self["bg"] = self.bg

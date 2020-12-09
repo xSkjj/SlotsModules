@@ -65,17 +65,12 @@ settingsBtn = colorbutton.ColorButton(root, "grey",
                                       text="⚙",
                                       font="Arial 20")
 
-settingsFrame = tk.Frame(root,  # the container for all settings
-                         bg=bgColor,
-                         highlightthickness=4,
-                         highlightbackground="white")
-
-settingsLabel = tk.Label(settingsFrame,
-                         text="SETTINGS",
-                         font="Impact 48",
-                         fg="white",
-                         bg=bgColor)
-settingsLabel.pack()
+settingsFrame = settings.Section(root,  # the container for all settings
+                                 text="SETTINGS",
+                                 pack=False,
+                                 highlightthickness=4,
+                                 highlightbackground="white")
+settingsFrame.label["font"] = "Impact 48"
 
 customisationSettings = settings.Section(settingsFrame,
                                          text="Customisation")
