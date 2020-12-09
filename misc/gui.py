@@ -1,6 +1,6 @@
 import tkinter as tk
 from random import randint
-from modules import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin, spin, utility
+from misc import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin, spin, utility
 from classes import slot, colorbutton, settings
 
 root = tk.Tk()

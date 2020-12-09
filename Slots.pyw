@@ -1,4 +1,4 @@
-from modules import gui
+from misc import gui
 
 # display the elements
 gui.header.pack(pady=4)

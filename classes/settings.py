@@ -1,5 +1,5 @@
 import tkinter as tk
-from modules import bgColor
+from misc import bgColor
 from classes import colorbutton
 
 

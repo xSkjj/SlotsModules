@@ -1,5 +1,5 @@
 import tkinter as tk
-from modules.utility import light_value as lv
+from misc.utility import light_value as lv
 
 
 class ColorButton(tk.Button):

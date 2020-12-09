@@ -1,4 +1,4 @@
-from modules import gui, ConfigParser
+from misc import gui, ConfigParser
 from tkinter import colorchooser
 
 

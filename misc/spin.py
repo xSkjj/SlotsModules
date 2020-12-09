@@ -1,5 +1,5 @@
 from random import randint
-from modules import slotAmt, fastSpin, symbols, symData, gui
+from misc import slotAmt, fastSpin, symbols, symData, gui
 import threading
 
 
