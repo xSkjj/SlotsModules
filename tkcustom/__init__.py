@@ -4,13 +4,16 @@ from misc import utility, bgColor
 
 class Button(tk.Button):
     def __init__(self, master, color, **kwargs):
-        self.color = color
-
+        self._diff = -80 if utility.is_bright(color) else 80
+        self.bg = color
+        self.fg = utility.set_brightness(color, self._diff)
+        self.abg = utility.set_brightness(color, -16)
+        self.afg = utility.set_brightness(color, self._diff - 16)
         super().__init__(master,
                          bg=color,
-                         fg=color,
-                         activebackground=color,
-                         activeforeground=color,
+                         fg=self.fg,
+                         activebackground=self.abg,
+                         activeforeground=self.afg,
                          relief="flat",
                          **kwargs)
 
@@ -19,8 +22,8 @@ class Button(tk.Button):
 
     def on_enter(self, _):
         if self["state"] != "disabled":
-            self["bg"] = utility.set_brightness(self.bg, 1.2)
-            self["fg"] = utility.set_brightness(self.fg, 1.2)
+            self["bg"] = utility.set_brightness(self.bg, 20)
+            self["fg"] = utility.set_brightness(self.fg, 20)
 
     def on_leave(self, _):
         self["bg"] = self.bg
@@ -46,7 +49,7 @@ class Section(tk.Frame):
 class TextSlider(tk.Frame):
     def __init__(self, master, font="Arial 10 bold"):
         super().__init__(master)
-        self.leftSlider = Button(self, "grey",
+        self.leftSlider = Button(self, "#404040",
                                  text="<",
                                  font=font,
                                  width=4)
@@ -54,7 +57,7 @@ class TextSlider(tk.Frame):
                                   font=font,
                                   bg=self.leftSlider["bg"],
                                   width=6)
-        self.rightSlider = Button(self, "grey",
+        self.rightSlider = Button(self, "#404040",
                                   text=">",
                                   font=font,
                                   width=4)
