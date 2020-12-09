@@ -31,11 +31,15 @@ class Button(tk.Button):
 
 
 class ColorPicker(Button):
-    def __init__(self, master, color, **kwargs):
+    def __init__(self, master, color, setting, **kwargs):
         super().__init__(master, color,
                          text="pick",
                          font="Consolas 12 bold",
+                         command=lambda: self.change_setting(setting),
                          **kwargs)
+
+    def change_setting(self, setting):
+        print(setting)
 
 
 class Section(tk.Frame):
