@@ -1,19 +1,16 @@
 import tkinter as tk
-
 from misc import utility, bgColor
 
 
 class Button(tk.Button):
     def __init__(self, master, color, **kwargs):
-        self.bg = color
-        self.fg = color
-        self.abg = color
-        self.afg = color
+        self.color = color
+
         super().__init__(master,
-                         bg=self.bg,
-                         fg=self.fg,
-                         activebackground=self.abg,
-                         activeforeground=self.afg,
+                         bg=color,
+                         fg=color,
+                         activebackground=color,
+                         activeforeground=color,
                          relief="flat",
                          **kwargs)
 
