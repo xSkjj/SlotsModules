@@ -80,17 +80,13 @@ bgColorSetting = tkc.Section(customisationSettings,
                              text="Background color",
                              grid=True)
 bgColorPicker = tkc.ColorPicker(bgColorSetting, bgColor,
-                                text="pick",
-                                command=lambda: utility.change_color(bgColorPicker, "window_background"),
-                                font="Consolas 12 bold")
+                                command=lambda: utility.change_color(bgColorPicker, "window_background"))
 
 bgSlotsSetting = tkc.Section(customisationSettings,
                              text="Slots background",
                              grid=True)
 bgSlotsPicker = tkc.ColorPicker(bgSlotsSetting, bgSlots,
-                                text="pick",
-                                command=lambda: utility.change_color(bgSlotsPicker, "slots_background"),
-                                font="Consolas 12 bold")
+                                command=lambda: utility.change_color(bgSlotsPicker, "slots_background"))
 
 gameSettings = tkc.Section(settingsFrame,
                            text="Game Settings")

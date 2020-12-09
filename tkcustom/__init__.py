@@ -32,7 +32,10 @@ class Button(tk.Button):
 
 class ColorPicker(Button):
     def __init__(self, master, color, **kwargs):
-        super().__init__(master, color, **kwargs)
+        super().__init__(master, color,
+                         text="pick",
+                         font="Consolas 12 bold",
+                         **kwargs)
 
 
 class Section(tk.Frame):
