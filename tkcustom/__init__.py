@@ -30,6 +30,11 @@ class Button(tk.Button):
         self["fg"] = self.fg
 
 
+class ColorPicker(Button):
+    def __init__(self, master, color, **kwargs):
+        super().__init__(master, color, **kwargs)
+
+
 class Section(tk.Frame):
     def __init__(self, master, text=None, grid=False, pack=True, **kwargs):
         super().__init__(master,

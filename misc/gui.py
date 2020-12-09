@@ -30,7 +30,7 @@ output = tk.Label(root,  # Label for various text strings to tell the user somet
                   text="How many credits would you like to use?",
                   font="Consolas 14",
                   fg="#41ff00",
-                  bg="black")
+                  bg="#101010")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction
                       bg=bgColor)
@@ -79,20 +79,18 @@ customisationSettings = tkc.Section(settingsFrame,
 bgColorSetting = tkc.Section(customisationSettings,
                              text="Background color",
                              grid=True)
-bgColorPicker = tk.Button(bgColorSetting,
-                          text="pick",
-                          bg=bgColor,
-                          command=lambda: utility.change_color(bgColorPicker, "window_background"),
-                          font="Consolas 12 bold")
+bgColorPicker = tkc.ColorPicker(bgColorSetting, bgColor,
+                                text="pick",
+                                command=lambda: utility.change_color(bgColorPicker, "window_background"),
+                                font="Consolas 12 bold")
 
 bgSlotsSetting = tkc.Section(customisationSettings,
                              text="Slots background",
                              grid=True)
-bgSlotsPicker = tk.Button(bgSlotsSetting,
-                          text="pick",
-                          bg=bgSlots,
-                          command=lambda: utility.change_color(bgSlotsPicker, "slots_background"),
-                          font="Consolas 12 bold")
+bgSlotsPicker = tkc.ColorPicker(bgSlotsSetting, bgSlots,
+                                text="pick",
+                                command=lambda: utility.change_color(bgSlotsPicker, "slots_background"),
+                                font="Consolas 12 bold")
 
 gameSettings = tkc.Section(settingsFrame,
                            text="Game Settings")
