@@ -114,8 +114,8 @@ fastSpinSlider = tk.Checkbutton(fastSpinSetting,
                                 var=check,
                                 bg=bgColor,
                                 command=lambda: utility.change_setting("game_settings",
-                                                                      "fast_spin",
-                                                                      str(check.get())),
+                                                                       "fast_spin",
+                                                                       str(check.get())),
                                 activeforeground="white",
                                 activebackground=bgColor)
 
