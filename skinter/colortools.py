@@ -1,4 +1,7 @@
 def to_rgb(hx):
+    """
+    Turn a hex color into a list with the rgb values
+    """
     return [int(hx[i] + hx[i + 1], 16) for i in range(1, 7, 2)]
 
 
