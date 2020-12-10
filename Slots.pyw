@@ -25,8 +25,6 @@ gui.fastSpinCheck.grid(column=1, row=0, sticky='e')
 # main menu and stuff
 # improve performance of spin animation
 #
-# TODO: add remaining settings functionality
-#
 
 # bind functions to events
 gui.amtInput.bind("<Return>", gui.spin.try_spin)  # same as clicking the spin button

@@ -109,25 +109,48 @@ class Section(tk.Frame):
 
 
 class TextSlider(tk.Frame):
-    def __init__(self, master, font="Arial 10 bold"):
+    def __init__(self, master, slides=' ', default_index=0, callback=None, font="Arial 10 bold"):
+        self._index = default_index
         super().__init__(master)
         self.leftSlider = Button(self, "#404040",
+                                 command=lambda: self._slide(slides, 0, callback),
                                  text="<",
                                  font=font,
                                  width=4)
         self.textLabel = tk.Label(self,
+                                  text=slides[self._index],
                                   font=font,
                                   bg=self.leftSlider["bg"],
+                                  fg="white",
                                   width=6)
         self.rightSlider = Button(self, "#404040",
+                                  command=lambda: self._slide(slides, 1, callback),
                                   text=">",
                                   font=font,
                                   width=4)
         self["bg"] = self.leftSlider["bg"]
 
+        self._check_slides(slides)
+
         self.leftSlider.grid(column=0, row=0)
         self.textLabel.grid(column=1, row=0)
         self.rightSlider.grid(column=2, row=0)
 
-    def slide(self):
-        pass  # TODO
+    def _check_slides(self, slides):
+        if self._index == 0:
+            self.leftSlider["state"] = "disabled"
+            self.leftSlider["bg"] = self.leftSlider.bg
+        else:
+            self.leftSlider["state"] = "normal"
+
+        if self._index == len(slides) - 1:
+            self.rightSlider["state"] = "disabled"
+            self.rightSlider["bg"] = self.rightSlider.bg
+        else:
+            self.rightSlider["state"] = "normal"
+
+    def _slide(self, slides, direction, callback=None):
+        self._index += 1 if direction else -1
+        self.textLabel["text"] = slides[self._index]
+        self._check_slides(slides)
+        callback(slides[self._index]) if callback else None
