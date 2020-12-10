@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import colorchooser
-from misc import utility, gui
 
 
 class Button(tk.Button):
@@ -8,7 +7,7 @@ class Button(tk.Button):
     Custom tkinter Button Widget
     """
 
-    def __init__(self, master, color, **kwargs):
+    def __init__(self, master, color="#484848", **kwargs):
         self._init_colors(color)
         super().__init__(master,
                          bg=self.bg,
@@ -93,8 +92,8 @@ class Section(tk.Frame):
     Custom Tkinter Frame with a Label
     """
 
-    def __init__(self, master, text=None, grid=False, pack=True, **kwargs):
-        super().__init__(master, bg=gui.rootBG, **kwargs)
+    def __init__(self, master, cnf=None, text=None, grid=False, pack=True, **kwargs):
+        super().__init__(master, cnf, **kwargs)
         self.label = tk.Label(self,
                               text=text,
                               font="Consolas 12 bold" if grid else "Impact 24",
@@ -107,9 +106,9 @@ class Section(tk.Frame):
 
 
 class TextSlider(tk.Frame):
-    def __init__(self, master, slides=' ', default_index=0, callback=None, font="Arial 10 bold"):
+    def __init__(self, master, slides=' ', default_index=0, callback=None, font="Arial 10 bold", cnf=None, **kwargs):
         self._index = default_index
-        super().__init__(master)
+        super().__init__(master, cnf, **kwargs)
         self.leftSlider = Button(self, "#404040",
                                  command=lambda: self._slide(slides, 0, callback),
                                  text="<",

@@ -1,5 +1,5 @@
 import tkinter as tk
-import tkcustom as tkc
+import skinter as sk
 from random import randint
 from misc import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin, spin, utility
 from classes import slot
@@ -52,10 +52,10 @@ amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amou
                     insertbackground="white",
                     relief="flat")
 
-spinBtn = tkc.Button(userInputs, "#77cc77",  # the button to start the spinning
-                     command=spin.spin,
-                     text="spin",
-                     font="Arial 20 bold")
+spinBtn = sk.Button(userInputs, "#77cc77",  # the button to start the spinning
+                    command=spin.spin,
+                    text="spin",
+                    font="Arial 20 bold")
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {startBal}",
@@ -63,54 +63,54 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     fg="gold",
                     bg=rootBG)
 
-settingsBtn = tkc.Button(root, "#404040",
-                         command=utility.show_settings,
-                         text="⚙",
-                         font="Arial 20")
+settingsBtn = sk.Button(root, "#404040",
+                        command=utility.show_settings,
+                        text="⚙",
+                        font="Arial 20")
 
-settingsFrame = tkc.Section(root,  # the container for all settings
-                            text="SETTINGS",
-                            pack=False,
-                            highlightthickness=4,
-                            highlightbackground="white")
+settingsFrame = sk.Section(root,  # the container for all settings
+                           text="SETTINGS",
+                           pack=False,
+                           highlightthickness=4,
+                           highlightbackground="white")
 settingsFrame.label["font"] = "Impact 48"
 
-customisationSettings = tkc.Section(settingsFrame,  # section for customisation
-                                    text="Customisation")
+customisationSettings = sk.Section(settingsFrame,  # section for customisation
+                                   text="Customisation")
 
-bgColorSetting = tkc.Section(customisationSettings,
-                             text="Background color",
-                             grid=True)
-bgColorPicker = tkc.ColorChooser(bgColorSetting, rootBG,
-                                 lambda color: (utility.change_setting("customisation",
+bgColorSetting = sk.Section(customisationSettings,
+                            text="Background color",
+                            grid=True)
+bgColorPicker = sk.ColorChooser(bgColorSetting, rootBG,
+                                lambda color: (utility.change_setting("customisation",
                                                                        "window_background",
                                                                        color),
                                                 utility.update_bg_color(color)))
 
-bgSlotsSetting = tkc.Section(customisationSettings,
-                             text="Slots background",
-                             grid=True)
-bgSlotsPicker = tkc.ColorChooser(bgSlotsSetting, bgSlots,
-                                 lambda color: utility.change_setting("customisation",
+bgSlotsSetting = sk.Section(customisationSettings,
+                            text="Slots background",
+                            grid=True)
+bgSlotsPicker = sk.ColorChooser(bgSlotsSetting, bgSlots,
+                                lambda color: utility.change_setting("customisation",
                                                                       "slots_background",
                                                                       color))
 
-gameSettings = tkc.Section(settingsFrame,
-                           text="Game Settings")
+gameSettings = sk.Section(settingsFrame,
+                          text="Game Settings")
 
-slotAmtSetting = tkc.Section(gameSettings,
-                             text="Slot amount",
-                             grid=True)
-slotAmtSlider = tkc.TextSlider(slotAmtSetting,
+slotAmtSetting = sk.Section(gameSettings,
+                            text="Slot amount",
+                            grid=True)
+slotAmtSlider = sk.TextSlider(slotAmtSetting,
                                "234567",
-                               slotAmt - 2,
-                               lambda value: utility.change_setting("game_settings",
+                              slotAmt - 2,
+                              lambda value: utility.change_setting("game_settings",
                                                                     "slot_amount",
                                                                     value))
 
-fastSpinSetting = tkc.Section(gameSettings,
-                              text="Fast spin",
-                              grid=True)
+fastSpinSetting = sk.Section(gameSettings,
+                             text="Fast spin",
+                             grid=True)
 
 check = tk.BooleanVar(value=fastSpin)
 fastSpinCheck = tk.Checkbutton(fastSpinSetting,
@@ -122,10 +122,10 @@ fastSpinCheck = tk.Checkbutton(fastSpinSetting,
                                activeforeground="white",
                                activebackground=rootBG)
 
-closeSettingsBtn = tkc.Button(settingsFrame, "#404040",
-                              command=utility.hide_settings,
-                              text="✕",
-                              font="Arial 20")
+closeSettingsBtn = sk.Button(settingsFrame, "#404040",
+                             command=utility.hide_settings,
+                             text="✕",
+                             font="Arial 20")
 
 sym = {}  # dictionary for each slot
 for i in range(slotAmt):  # has to be in a for loop, since the user can change the amount of slots
