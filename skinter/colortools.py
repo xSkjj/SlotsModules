@@ -20,9 +20,3 @@ def set_brightness(hx, value):
         rgb_list[i] = min(max(round(c + value), 0), 255)
     r, g, b = rgb_list
     return rgb(r, g, b)
-
-
-def switch(key, cases: dict):
-    call = cases.get(key, cases.get("default"))
-    if call is not None:
-        call()
