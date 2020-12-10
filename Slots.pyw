@@ -20,9 +20,9 @@ gui.fastSpinCheck.grid(column=1, row=0, sticky='e')
 # May do:
 #
 # can change all settings while still running
+# class App(tk.Frame)
 # Save and exit, cancel, apply buttons
 # main menu and stuff
-# class App(tk.Frame)
 # improve performance of spin animation
 #
 # TODO: add remaining settings functionality
