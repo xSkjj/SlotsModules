@@ -7,6 +7,7 @@ class Button(tk.Button):
     """
     Custom tkinter Button Widget
     """
+
     def __init__(self, master, color, **kwargs):
         self._init_colors(color)
         super().__init__(master,
@@ -59,6 +60,14 @@ class Button(tk.Button):
 
 
 class ColorChooser(Button):
+    """
+    Custom Tkinter Button that
+    opens a color chooser window and
+    changes its color to the chosen color
+    with a callback function to use the
+    selected color value in external stuff
+    """
+
     def __init__(self, master, color, callback=None, **kwargs):
         super().__init__(master, color,
                          text="pick",
@@ -80,6 +89,10 @@ class ColorChooser(Button):
 
 
 class Section(tk.Frame):
+    """
+    Custom Tkinter Frame with a Label
+    """
+
     def __init__(self, master, text=None, grid=False, pack=True, **kwargs):
         super().__init__(master,
                          bg=bgColor,
