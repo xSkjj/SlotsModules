@@ -5,22 +5,20 @@ from misc import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin
 from classes import slot
 
 root = tk.Tk()
-rootBG = tk.StringVar(value=bgColor).get()
-
 
 # apply window settings
 root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the window
 root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
 root.minsize(480, 480)  # set minimum width and height of the window
-root["bg"] = rootBG  # set the background color of the window
+root["bg"] = bgColor  # set the background color of the window
 
 # define elements and set their properties
 header = tk.Label(root,  # "SLOTS" title
                   text="$  L  O  T  $",
                   font="Impact 48",
                   fg="gold",
-                  bg=rootBG)
+                  bg=bgColor)
 
 slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
                        width=slotAmt * 120,
@@ -35,13 +33,13 @@ output = tk.Label(root,  # Label for various text strings to tell the user somet
                   bg="#101010")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction
-                      bg=rootBG)
+                      bg=bgColor)
 
 amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balance amount the user wants to use
                          text="Amount:",
                          font="Arial 16 bold",
                          fg="white",
-                         bg=rootBG)
+                         bg=bgColor)
 
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
@@ -61,7 +59,7 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {startBal}",
                     font="Arial 16 bold",
                     fg="gold",
-                    bg=rootBG)
+                    bg=bgColor)
 
 settingsBtn = sk.Button(root, "#404040",
                         command=utility.show_settings,
@@ -81,19 +79,18 @@ customisationSettings = sk.Section(settingsFrame,  # section for customisation
 bgColorSetting = sk.Section(customisationSettings,
                             text="Background color",
                             grid=True)
-bgColorPicker = sk.ColorChooser(bgColorSetting, rootBG,
+bgColorPicker = sk.ColorChooser(bgColorSetting, bgColor,
                                 lambda color: (utility.change_setting("customisation",
-                                                                       "window_background",
-                                                                       color),
-                                                utility.update_bg_color(color)))
+                                                                      "window_background",
+                                                                      color)))
 
 bgSlotsSetting = sk.Section(customisationSettings,
                             text="Slots background",
                             grid=True)
 bgSlotsPicker = sk.ColorChooser(bgSlotsSetting, bgSlots,
                                 lambda color: utility.change_setting("customisation",
-                                                                      "slots_background",
-                                                                      color))
+                                                                     "slots_background",
+                                                                     color))
 
 gameSettings = sk.Section(settingsFrame,
                           text="Game Settings")
@@ -102,11 +99,11 @@ slotAmtSetting = sk.Section(gameSettings,
                             text="Slot amount",
                             grid=True)
 slotAmtSlider = sk.TextSlider(slotAmtSetting,
-                               "234567",
+                              "234567",
                               slotAmt - 2,
                               lambda value: utility.change_setting("game_settings",
-                                                                    "slot_amount",
-                                                                    value))
+                                                                   "slot_amount",
+                                                                   value))
 
 fastSpinSetting = sk.Section(gameSettings,
                              text="Fast spin",
@@ -115,12 +112,12 @@ fastSpinSetting = sk.Section(gameSettings,
 check = tk.BooleanVar(value=fastSpin)
 fastSpinCheck = tk.Checkbutton(fastSpinSetting,
                                var=check,
-                               bg=rootBG,
+                               bg=bgColor,
                                command=lambda: utility.change_setting("game_settings",
                                                                       "fast_spin",
                                                                       str(check.get())),
                                activeforeground="white",
-                               activebackground=rootBG)
+                               activebackground=bgColor)
 
 closeSettingsBtn = sk.Button(settingsFrame, "#404040",
                              command=utility.hide_settings,
