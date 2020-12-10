@@ -11,7 +11,7 @@ root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the wi
 root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
 root.minsize(480, 480)  # set minimum width and height of the window
-root["background"] = bgColor  # set the background color of the window
+root["bg"] = bgColor  # set the background color of the window
 
 # define elements and set their properties
 header = tk.Label(root,  # "SLOTS" title
@@ -79,7 +79,11 @@ customisationSettings = tkc.Section(settingsFrame,  # section for customisation
 bgColorSetting = tkc.Section(customisationSettings,
                              text="Background color",
                              grid=True)
-bgColorPicker = tkc.ColorChooser(bgColorSetting, bgColor)
+bgColorPicker = tkc.ColorChooser(bgColorSetting, bgColor,
+                                 lambda color: (utility.change_setting("customisation",
+                                                                       "window_background",
+                                                                       color),
+                                                utility.update_bg_color(color)))
 
 bgSlotsSetting = tkc.Section(customisationSettings,
                              text="Slots background",

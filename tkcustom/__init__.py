@@ -66,16 +66,17 @@ class ColorChooser(Button):
                          command=lambda: self.askcolor(callback),
                          **kwargs)
 
-    def askcolor(self, callback):
+    def askcolor(self, callback=None):
         """
         Opens a color chooser window and
         changes the button color to the chosen color,
         along with the following variables:
         .bg, .fg, .abg, .afg
+        and calls a callback with the color as a parameter
         """
         rgb, color = colorchooser.askcolor()
         super().change_color(color) if color else None
-        callback() if callback else None
+        callback(color) if callback else None
 
 
 class Section(tk.Frame):
