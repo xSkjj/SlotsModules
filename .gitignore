@@ -2,4 +2,3 @@ venv/
 .idea/
 .vs/
 __pycache__/
-settings.ini
