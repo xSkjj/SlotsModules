@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import colorchooser
+from skinter import colortools as ct
 
 
 class Button(tk.Button):
@@ -24,19 +25,19 @@ class Button(tk.Button):
         """
         forbidden, unless...
         """
-        _diff = -80 if utility.is_bright(color) else 80
+        _diff = -80 if ct.is_bright(color) else 80
         self.bg = color
-        self.fg = utility.set_brightness(color, _diff)
-        self.abg = utility.set_brightness(color, -16)
-        self.afg = utility.set_brightness(color, _diff - 16)
+        self.fg = ct.set_brightness(color, _diff)
+        self.abg = ct.set_brightness(color, -16)
+        self.afg = ct.set_brightness(color, _diff - 16)
 
     def _on_enter(self, _):
         """
         you shall not use this!
         """
         if self["state"] != "disabled":
-            self["bg"] = utility.set_brightness(self.bg, 20)
-            self["fg"] = utility.set_brightness(self.fg, 20)
+            self["bg"] = ct.set_brightness(self.bg, 20)
+            self["fg"] = ct.set_brightness(self.fg, 20)
 
     def _on_leave(self, _):
         """
