@@ -1,4 +1,4 @@
-from misc import gui, ConfigParser, bgColor
+from misc import gui, ConfigParser
 
 
 def show_settings():
@@ -41,22 +41,3 @@ def set_brightness(hx, value):
         rgb_list[i] = min(max(round(c + value), 0), 255)
     r, g, b = rgb_list
     return rgb(r, g, b)
-
-
-def update_bg_color(color):
-    # bad, VERY BAD practice
-    gui.root["bg"] = color
-    gui.header["bg"] = color
-    gui.userInputs["bg"] = color
-    gui.amtInputLabel["bg"] = color
-    gui.balLabel["bg"] = color
-    gui.bgColorPicker["bg"] = color
-    gui.fastSpinCheck["bg"] = color
-    gui.fastSpinCheck["activebackground"] = color
-    gui.settingsFrame["bg"] = color
-    gui.customisationSettings["bg"] = color
-    gui.bgColorSetting["bg"] = color
-    gui.bgSlotsSetting["bg"] = color
-    gui.gameSettings["bg"] = color
-    gui.slotAmtSetting["bg"] = color
-    gui.fastSpinSetting["bg"] = color

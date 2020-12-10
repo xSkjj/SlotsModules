@@ -5,20 +5,22 @@ from misc import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin
 from classes import slot
 
 root = tk.Tk()
+rootBG = tk.StringVar(value=bgColor).get()
+
 
 # apply window settings
 root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the window
 root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
 root.minsize(480, 480)  # set minimum width and height of the window
-root["bg"] = bgColor  # set the background color of the window
+root["bg"] = rootBG  # set the background color of the window
 
 # define elements and set their properties
 header = tk.Label(root,  # "SLOTS" title
                   text="$  L  O  T  $",
                   font="Impact 48",
                   fg="gold",
-                  bg=bgColor)
+                  bg=rootBG)
 
 slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
                        width=slotAmt * 120,
@@ -33,13 +35,13 @@ output = tk.Label(root,  # Label for various text strings to tell the user somet
                   bg="#101010")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction
-                      bg=bgColor)
+                      bg=rootBG)
 
 amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balance amount the user wants to use
                          text="Amount:",
                          font="Arial 16 bold",
                          fg="white",
-                         bg=bgColor)
+                         bg=rootBG)
 
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
@@ -59,7 +61,7 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {startBal}",
                     font="Arial 16 bold",
                     fg="gold",
-                    bg=bgColor)
+                    bg=rootBG)
 
 settingsBtn = tkc.Button(root, "#404040",
                          command=utility.show_settings,
@@ -79,7 +81,7 @@ customisationSettings = tkc.Section(settingsFrame,  # section for customisation
 bgColorSetting = tkc.Section(customisationSettings,
                              text="Background color",
                              grid=True)
-bgColorPicker = tkc.ColorChooser(bgColorSetting, bgColor,
+bgColorPicker = tkc.ColorChooser(bgColorSetting, rootBG,
                                  lambda color: (utility.change_setting("customisation",
                                                                        "window_background",
                                                                        color),
@@ -113,12 +115,12 @@ fastSpinSetting = tkc.Section(gameSettings,
 check = tk.BooleanVar(value=fastSpin)
 fastSpinCheck = tk.Checkbutton(fastSpinSetting,
                                var=check,
-                               bg=bgColor,
+                               bg=rootBG,
                                command=lambda: utility.change_setting("game_settings",
                                                                       "fast_spin",
                                                                       str(check.get())),
                                activeforeground="white",
-                               activebackground=bgColor)
+                               activebackground=rootBG)
 
 closeSettingsBtn = tkc.Button(settingsFrame, "#404040",
                               command=utility.hide_settings,

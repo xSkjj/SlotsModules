@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import colorchooser
-from misc import utility, bgColor
+from misc import utility, gui
 
 
 class Button(tk.Button):
@@ -94,14 +94,12 @@ class Section(tk.Frame):
     """
 
     def __init__(self, master, text=None, grid=False, pack=True, **kwargs):
-        super().__init__(master,
-                         bg=bgColor,
-                         **kwargs)
+        super().__init__(master, bg=gui.rootBG, **kwargs)
         self.label = tk.Label(self,
                               text=text,
                               font="Consolas 12 bold" if grid else "Impact 24",
                               fg="white",
-                              bg=bgColor)
+                              bg=self["bg"])
         self.label.grid(column=0, row=0, padx=4, sticky='w') if grid else self.label.pack()
         self.grid_columnconfigure(0, weight=1)
         self.grid_columnconfigure(1, weight=1)
