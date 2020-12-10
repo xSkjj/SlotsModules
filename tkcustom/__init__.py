@@ -85,7 +85,7 @@ class ColorChooser(Button):
         """
         rgb, color = colorchooser.askcolor()
         super().change_color(color) if color else None
-        callback(color) if callback else None
+        callback(color) if callback and color else None
 
 
 class Section(tk.Frame):
