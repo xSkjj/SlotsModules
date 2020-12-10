@@ -15,7 +15,7 @@ gui.closeSettingsBtn.place(width=40, height=40)
 gui.bgColorPicker.grid(column=1, row=0, sticky='e')
 gui.bgSlotsPicker.grid(column=1, row=0, sticky='e')
 gui.slotAmtSlider.grid(column=1, row=0, sticky='e')
-gui.fastSpinCheck.grid(column=1, row=0, sticky='e')
+gui.fastSpinSlider.grid(column=1, row=0, sticky='e')
 
 # Can do:
 #

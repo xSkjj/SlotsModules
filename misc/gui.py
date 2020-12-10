@@ -110,14 +110,14 @@ fastSpinSetting = sk.Section(gameSettings,
                              grid=True)
 
 check = tk.BooleanVar(value=fastSpin)
-fastSpinCheck = tk.Checkbutton(fastSpinSetting,
-                               var=check,
-                               bg=bgColor,
-                               command=lambda: utility.change_setting("game_settings",
+fastSpinSlider = tk.Checkbutton(fastSpinSetting,
+                                var=check,
+                                bg=bgColor,
+                                command=lambda: utility.change_setting("game_settings",
                                                                       "fast_spin",
                                                                       str(check.get())),
-                               activeforeground="white",
-                               activebackground=bgColor)
+                                activeforeground="white",
+                                activebackground=bgColor)
 
 closeSettingsBtn = sk.Button(settingsFrame, "#404040",
                              command=utility.hide_settings,
