@@ -25,19 +25,19 @@ class Button(tk.Button):
         """
         forbidden, unless...
         """
-        _diff = -80 if ct.is_bright(color) else 80
+        _diff = 96 if ct.is_dark(color) else -96
         self.bg = color
-        self.fg = ct.set_brightness(color, _diff)
-        self.abg = ct.set_brightness(color, -16)
-        self.afg = ct.set_brightness(color, _diff - 16)
+        self.fg = ct.color_math(color, _diff)
+        self.abg = ct.color_math(color, -16)
+        self.afg = ct.color_math(color, _diff - 16)
 
     def _on_enter(self, _):
         """
         you shall not use this!
         """
         if self["state"] != "disabled":
-            self["bg"] = ct.set_brightness(self.bg, 20)
-            self["fg"] = ct.set_brightness(self.fg, 20)
+            self["bg"] = ct.color_math(self.bg, 20)
+            self["fg"] = ct.color_math(self.fg, 20)
 
     def _on_leave(self, _):
         """
@@ -94,7 +94,7 @@ class Section(tk.Frame):
     """
 
     def __init__(self, master, cnf=None, text=None, grid=False, pack=True, **kwargs):
-        super().__init__(master, cnf, **kwargs)
+        super().__init__(master, cnf, bg=master["bg"], **kwargs)
         self.label = tk.Label(self,
                               text=text,
                               font="Consolas 12 bold" if grid else "Impact 24",
@@ -107,6 +107,10 @@ class Section(tk.Frame):
 
 
 class TextSlider(tk.Frame):
+    """
+    A Widget for switching through a list
+    """
+
     def __init__(self, master, slides=' ', default_index=0, callback=None, font="Arial 10 bold", cnf=None, **kwargs):
         self._index = default_index
         super().__init__(master, cnf, **kwargs)
