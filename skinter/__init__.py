@@ -70,7 +70,8 @@ class ColorChooser(Button):
 
     def __init__(self, master, color, callback=None, **kwargs):
         super().__init__(master, color,
-                         text="pick",
+                         text="choose color",
+                         width=14,
                          font="Consolas 12 bold",
                          command=lambda: self.askcolor(callback),
                          **kwargs)
