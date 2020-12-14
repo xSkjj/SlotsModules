@@ -25,7 +25,7 @@ class Button(tk.Button):
         """
         forbidden, unless...
         """
-        _diff = 96 if ct.is_dark(color) else -96
+        _diff = 128 if ct.is_dark(color) else -128
         self.bg = color
         self.fg = ct.color_math(color, _diff)
         self.abg = ct.color_math(color, -16)
