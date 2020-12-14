@@ -71,7 +71,7 @@ class ColorChooser(Button):
     def __init__(self, master, color, callback=None, **kwargs):
         super().__init__(master, color,
                          text="choose color",
-                         width=14,
+                         width=16,
                          font="Consolas 12 bold",
                          command=lambda: self.askcolor(callback),
                          **kwargs)
@@ -125,7 +125,7 @@ class TextSlider(tk.Frame):
                                   font=font,
                                   bg=self.leftSlider["bg"],
                                   fg="white",
-                                  width=6)
+                                  width=8)
         self.rightSlider = Button(self, "#404040",
                                   command=lambda: self._slide(slides, 1, callback),
                                   text=">",
