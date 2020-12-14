@@ -17,9 +17,7 @@ gui.bgSlotsPicker.grid(column=1, row=0, sticky='e')
 gui.slotAmtSlider.grid(column=1, row=0, sticky='e')
 gui.fastSpinSlider.grid(column=1, row=0, sticky='e')
 
-# Can do:
-#
-# can change all settings while still running
+# TODO: ability to change all settings while still running
 # class App(tk.Frame)
 # Save and exit, cancel, apply buttons
 # main menu and stuff
