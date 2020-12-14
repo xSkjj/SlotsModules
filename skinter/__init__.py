@@ -120,12 +120,12 @@ class TextSlider(tk.Frame):
                                  text="<",
                                  font=font,
                                  width=4)
-        self.textLabel = tk.Label(self,
-                                  text=slides[self._index],
-                                  font=font,
-                                  bg=self.leftSlider["bg"],
-                                  fg="white",
-                                  width=8)
+        self.lbl_currentSlide = tk.Label(self,
+                                         text=slides[self._index],
+                                         font=font,
+                                         bg=self.leftSlider["bg"],
+                                         fg="white",
+                                         width=8)
         self.rightSlider = Button(self, "#404040",
                                   command=lambda: self._slide(slides, 1, callback),
                                   text=">",
@@ -136,7 +136,7 @@ class TextSlider(tk.Frame):
         self._check_slides(slides)
 
         self.leftSlider.grid(column=0, row=0)
-        self.textLabel.grid(column=1, row=0)
+        self.lbl_currentSlide.grid(column=1, row=0)
         self.rightSlider.grid(column=2, row=0)
 
     def _check_slides(self, slides):
@@ -154,6 +154,6 @@ class TextSlider(tk.Frame):
 
     def _slide(self, slides, direction, callback=None):
         self._index += 1 if direction else -1
-        self.textLabel["text"] = slides[self._index]
+        self.lbl_currentSlide["text"] = slides[self._index]
         self._check_slides(slides)
         callback(slides[self._index]) if callback else None
