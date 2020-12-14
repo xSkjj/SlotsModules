@@ -94,8 +94,8 @@ class Section(tk.Frame):
     Custom Tkinter Frame with a Label
     """
 
-    def __init__(self, master, cnf=None, text=None, grid=False, pack=True, **kwargs):
-        super().__init__(master, cnf, bg=master["bg"], **kwargs)
+    def __init__(self, master, text=None, grid=False, pack=True, **kwargs):
+        super().__init__(master, bg=master["bg"], **kwargs)
         self.label = tk.Label(self,
                               text=text,
                               font="Consolas 12 bold" if grid else "Impact 24",
@@ -112,26 +112,26 @@ class TextSlider(tk.Frame):
     A Widget for switching through a list
     """
 
-    def __init__(self, master, slides=' ', default_index=0, callback=None, font="Arial 10 bold", cnf=None, **kwargs):
-        self._index = default_index
-        super().__init__(master, cnf, **kwargs)
-        self.leftSlider = Button(self, "#404040",
+    def __init__(self, master, default_value, slides, callback=None, font="Arial 10 bold", **kwargs):
+        self._index = slides.index(default_value) if slides.count(default_value) else 0
+        super().__init__(master, **kwargs)
+        self.leftSlider = Button(self, master["bg"],
                                  command=lambda: self._slide(slides, 0, callback),
                                  text="<",
                                  font=font,
                                  width=4)
         self.lbl_currentSlide = tk.Label(self,
-                                         text=slides[self._index],
+                                         text=default_value,
                                          font=font,
-                                         bg=self.leftSlider["bg"],
+                                         bg=master["bg"],
                                          fg="white",
                                          width=8)
-        self.rightSlider = Button(self, "#404040",
+        self.rightSlider = Button(self, master["bg"],
                                   command=lambda: self._slide(slides, 1, callback),
                                   text=">",
                                   font=font,
                                   width=4)
-        self["bg"] = self.leftSlider["bg"]
+        self["bg"] = master["bg"]
 
         self._check_slides(slides)
 
@@ -140,7 +140,7 @@ class TextSlider(tk.Frame):
         self.rightSlider.grid(column=2, row=0)
 
     def _check_slides(self, slides):
-        if self._index == 0:
+        if not self._index:
             self.leftSlider["state"] = "disabled"
             self.leftSlider["bg"] = self.leftSlider.bg
         else:

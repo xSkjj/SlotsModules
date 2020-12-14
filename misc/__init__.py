@@ -6,7 +6,7 @@ config.read("settings.ini")  # get window settings from settings.ini
 bgColor = config.get("customisation", "window_background")
 bgSlots = config.get("customisation", "slots_background")
 
-slotAmt = min(max(config.getint("game_settings", "slot_amount"), 2), 7)
+slotAmt = config.getint("game_settings", "slot_amount")
 fastSpin = config.getboolean("game_settings", "fast_spin")
 
 symData = {

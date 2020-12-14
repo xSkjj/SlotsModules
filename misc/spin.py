@@ -23,7 +23,7 @@ def spin():
       -> if it exceeds the user's balance, run not_valid()
     """
     amt = gui.amtInput.get()
-    if amt == "":
+    if not amt:
         return not_valid("Please input a number")
     elif amt == '0':
         return not_valid("Please use at least 1 (one) credit")
@@ -81,12 +81,12 @@ def spin_process():
     for key in slot_values:
         if slot_values[key] >= 2:
             win += len(symbols) * slot_values[key] / symData[key]["occurrence"] ** 2
-    if round(amt * win) > 0:
+    if round(amt * win):
         bal += round(amt * win)
-        gui.output["text"] = f"You spent {amt} credit{'s' if amt > 1 else ''}" \
-                             f" and won {round(amt * win)} credit{'s' if round(amt * win) > 1 else ''}!"
+        gui.output["text"] = f"You spent {amt} credit{'s' if amt - 1 else ''}" \
+                             f" and won {round(amt * win)} credit{'s' if round(amt * win) - 1 else ''}!"
     else:
-        gui.output["text"] = f"You spent {amt} credit{'s' if amt > 1 else ''} and lost everything."
+        gui.output["text"] = f"You spent {amt} credit{'s' if amt - 1 else ''} and lost everything."
 
     gui.balLabel["text"] = f"Balance: {bal}"  # update the balance Label with the new balance
     gui.spinBtn.update()

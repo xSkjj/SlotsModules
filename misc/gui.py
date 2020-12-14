@@ -99,8 +99,8 @@ slotAmtSetting = sk.Section(gameSettings,
                             text="Slot amount",
                             grid=True)
 slotAmtSlider = sk.TextSlider(slotAmtSetting,
+                              str(slotAmt),
                               "234567",
-                              slotAmt - 2,
                               lambda value: utility.change_setting("game_settings",
                                                                    "slot_amount",
                                                                    value))
@@ -110,8 +110,8 @@ fastSpinSetting = sk.Section(gameSettings,
                              grid=True)
 
 fastSpinSlider = sk.TextSlider(fastSpinSetting,
+                               ["Off", "On"][fastSpin],
                                ["Off", "On"],
-                               fastSpin,
                                lambda value: utility.change_setting("game_settings",
                                                                     "fast_spin",
                                                                     value))

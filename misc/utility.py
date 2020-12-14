@@ -17,9 +17,3 @@ def change_setting(sect, key, value):
     config[sect][key] = value
     with open("settings.ini", 'w') as settings:
         config.write(settings)
-
-
-def print_tk_config(w):
-    cl = w.config(w())
-    for key in cl:
-        print(key, cl[key])
