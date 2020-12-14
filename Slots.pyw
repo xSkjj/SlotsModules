@@ -24,7 +24,7 @@ gui.fastSpinSlider.grid(column=1, row=0, sticky='e')
 # Save and exit, cancel, apply buttons
 # main menu and stuff
 # improve performance of spin animation
-#
+# organize code
 
 # bind functions to events
 gui.amtInput.bind("<Return>", gui.spin.try_spin)  # same as clicking the spin button
