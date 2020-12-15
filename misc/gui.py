@@ -57,7 +57,7 @@ spinBtn = sk.Button(userInputs, "#77cc77",  # the button to start the spinning
                     font="Arial 20 bold")
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
-                    text=f"Balance: {misc.startBal}",
+                    text=f"Balance: {misc.startBalance}",
                     font="Arial 16 bold",
                     fg="gold",
                     bg=misc.bgColor)

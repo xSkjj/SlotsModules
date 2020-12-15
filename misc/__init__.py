@@ -3,11 +3,13 @@ from configparser import ConfigParser
 config = configQ = ConfigParser()
 config.read("settings.ini")  # get window settings from settings.ini
 
-bgColor = config.get("customisation", "window_background")
-bgSlots = config.get("customisation", "slots_background")
+config.bgColor = config.get("customisation", "background_color")
+config.bgSlots = config.get("customisation", "slots_background")
 
-slotAmt = config.getint("game_settings", "slot_amount")
-fastSpin = config.getboolean("game_settings", "fast_spin")
+config.slotAmt = config.getint("game_settings", "slot_amount")
+config.fastSpin = config.getboolean("game_settings", "fast_spin")
+
+startBalance = 1000
 
 symData = {
     "🍒": {"color": "#790604", "occurrence": 15},
@@ -29,5 +31,3 @@ symData = {
 }
 
 symbols = [key for key in symData for i in range(symData[key]["occurrence"])]
-
-startBal = 1000  # starting balance
