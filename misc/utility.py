@@ -1,4 +1,4 @@
-from misc import gui, ConfigParser
+from misc import gui, config
 
 
 def show_settings():
@@ -12,8 +12,6 @@ def hide_settings():
 
 
 def change_setting(sect, key, value):
-    config = ConfigParser()
-    config.read("settings.ini")
     config[sect][key] = value
     with open("settings.ini", 'w') as settings:
         config.write(settings)
