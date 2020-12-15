@@ -74,25 +74,6 @@ settingsFrame = sk.Section(root,  # the container for all settings
                            highlightbackground="white")
 settingsFrame.label["font"] = "Impact 48"
 
-customisationSettings = sk.Section(settingsFrame,  # section for customisation
-                                   text="Customisation")
-
-bgColorSetting = sk.Section(customisationSettings,
-                            text="Background color",
-                            grid=True)
-bgColorPicker = sk.ColorChooser(bgColorSetting, misc.bgColor,
-                                lambda color: (misc.utility.change_setting("customisation",
-                                                                           "window_background",
-                                                                           color)))
-
-bgSlotsSetting = sk.Section(customisationSettings,
-                            text="Slots background",
-                            grid=True)
-bgSlotsPicker = sk.ColorChooser(bgSlotsSetting, misc.bgSlots,
-                                lambda color: misc.utility.change_setting("customisation",
-                                                                          "slots_background",
-                                                                          color))
-
 gameSettings = sk.Section(settingsFrame,
                           text="Game Settings")
 
