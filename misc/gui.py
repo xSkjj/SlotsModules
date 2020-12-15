@@ -98,10 +98,7 @@ fastSpinSlider = sk.TextSlider(fastSpinSetting,
                                                                          "fast_spin",
                                                                          value))
 
-closeSettingsBtn = sk.Button(settingsFrame, "#404040",
-                             command=misc.utility.hide_settings,
-                             text="✕",
-                             font="Arial 20")
+okCancelApplySettings = sk.OkCancelApply(settingsFrame)
 
 sym = {}  # dictionary for each slot
 for i in range(misc.slotAmt):  # has to be in a for loop, since the user can change the amount of slots

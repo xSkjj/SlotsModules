@@ -11,9 +11,9 @@ gui.spinBtn.grid(column=1, row=0, rowspan=2, padx=5, sticky='s')
 gui.userInputs.pack()
 gui.balLabel.pack(pady=10)
 
-gui.closeSettingsBtn.place(width=40, height=40)
 gui.slotAmtSlider.grid(column=1, row=0, sticky='e')
 gui.fastSpinSlider.grid(column=1, row=0, sticky='e')
+gui.okCancelApplySettings.pack(side="bottom", pady=4)
 
 # TODO: ability to change all settings while still running
 # class App(tk.Frame)

@@ -157,3 +157,38 @@ class TextSlider(tk.Frame):
         self.lbl_currentSlide["text"] = slides[self._index]
         self._check_slides(slides)
         callback(slides[self._index]) if callback else None
+
+
+class OkCancelApply(tk.Frame):
+    """
+    "Ok"-button, "cancel"-button and "apply"-button for settings
+    """
+
+    def __init__(self, master, **kwargs):
+        self.master = master
+        super().__init__(master, bg=master["bg"], **kwargs)
+        self.ok = Button(self, "#404040",
+                         command=self._ok,
+                         font="Consolas 12",
+                         text="OK")
+        self.cancel = Button(self, "#404040",
+                             command=self._cancel,
+                             font="Consolas 12",
+                             text="Cancel")
+        self.apply = Button(self, "#404040",
+                            command=self._apply,
+                            font="Consolas 12",
+                            text="Apply")
+
+        self.ok.grid(column=0, row=0, padx=2)
+        self.cancel.grid(column=1, row=0, padx=2)
+        self.apply.grid(column=2, row=0, padx=2)
+
+    def _ok(self):
+        pass
+
+    def _cancel(self):
+        self.master.place_forget()
+
+    def _apply(self):
+        pass
