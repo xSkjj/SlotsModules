@@ -109,7 +109,7 @@ class Section(tk.Frame):
 
 class TextSlider(tk.Frame):
     """
-    A Widget for switching through a list
+    A Widget for switching through an array
     """
 
     def __init__(self, master, default_value, slides, callback=None, font="Arial 10 bold", **kwargs):
