@@ -11,6 +11,11 @@ def hide_settings():
     gui.settingsFrame.place_forget()
 
 
+def reset_settings():
+    gui.slotAmtSlider.currentSlide["text"] = str(gui.misc.slotAmt)
+    gui.fastSpinSlider.currentSlide["text"] = ["Off", "On"][gui.misc.fastSpin]
+
+
 def change_setting(sect, key, value):
     config[sect][key] = value
     with open("settings.ini", 'w') as settings:
