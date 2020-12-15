@@ -1,7 +1,8 @@
 import tkinter as tk
 import skinter as sk
 from random import randint
-from misc import bgColor, bgSlots, slotAmt, symData, symbols, startBal, fastSpin, spin, utility
+import misc
+from misc import spin, utility
 from classes import slot
 
 root = tk.Tk()
@@ -11,19 +12,19 @@ root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the wi
 root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
 root.minsize(480, 480)  # set minimum width and height of the window
-root["bg"] = bgColor  # set the background color of the window
+root["bg"] = misc.bgColor  # set the background color of the window
 
 # define elements and set their properties
 header = tk.Label(root,  # "SLOTS" title
                   text="$  L  O  T  $",
                   font="Impact 48",
                   fg="gold",
-                  bg=bgColor)
+                  bg=misc.bgColor)
 
 slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
-                       width=slotAmt * 120,
+                       width=misc.slotAmt * 120,
                        height=120,
-                       bg=bgSlots,
+                       bg=misc.bgSlots,
                        highlightthickness=0)
 
 output = tk.Label(root,  # Label for various text strings to tell the user something
@@ -33,13 +34,13 @@ output = tk.Label(root,  # Label for various text strings to tell the user somet
                   bg="#101010")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction
-                      bg=bgColor)
+                      bg=misc.bgColor)
 
 amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balance amount the user wants to use
                          text="Amount:",
                          font="Arial 16 bold",
                          fg="white",
-                         bg=bgColor)
+                         bg=misc.bgColor)
 
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
@@ -51,18 +52,18 @@ amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amou
                     relief="flat")
 
 spinBtn = sk.Button(userInputs, "#77cc77",  # the button to start the spinning
-                    command=spin.spin,
+                    command=misc.spin.spin,
                     text="spin",
                     font="Arial 20 bold")
 
 balLabel = tk.Label(root,  # the Label to display the current user balance
-                    text=f"Balance: {startBal}",
+                    text=f"Balance: {misc.startBal}",
                     font="Arial 16 bold",
                     fg="gold",
-                    bg=bgColor)
+                    bg=misc.bgColor)
 
 settingsBtn = sk.Button(root, "#404040",
-                        command=utility.show_settings,
+                        command=misc.utility.show_settings,
                         text="⚙",
                         font="Arial 20")
 
@@ -79,18 +80,18 @@ customisationSettings = sk.Section(settingsFrame,  # section for customisation
 bgColorSetting = sk.Section(customisationSettings,
                             text="Background color",
                             grid=True)
-bgColorPicker = sk.ColorChooser(bgColorSetting, bgColor,
-                                lambda color: (utility.change_setting("customisation",
-                                                                      "window_background",
-                                                                      color)))
+bgColorPicker = sk.ColorChooser(bgColorSetting, misc.bgColor,
+                                lambda color: (misc.utility.change_setting("customisation",
+                                                                           "window_background",
+                                                                           color)))
 
 bgSlotsSetting = sk.Section(customisationSettings,
                             text="Slots background",
                             grid=True)
-bgSlotsPicker = sk.ColorChooser(bgSlotsSetting, bgSlots,
-                                lambda color: utility.change_setting("customisation",
-                                                                     "slots_background",
-                                                                     color))
+bgSlotsPicker = sk.ColorChooser(bgSlotsSetting, misc.bgSlots,
+                                lambda color: misc.utility.change_setting("customisation",
+                                                                          "slots_background",
+                                                                          color))
 
 gameSettings = sk.Section(settingsFrame,
                           text="Game Settings")
@@ -99,32 +100,32 @@ slotAmtSetting = sk.Section(gameSettings,
                             text="Slot amount",
                             grid=True)
 slotAmtSlider = sk.TextSlider(slotAmtSetting,
-                              str(slotAmt),
+                              str(misc.slotAmt),
                               "234567",
-                              lambda value: utility.change_setting("game_settings",
-                                                                   "slot_amount",
-                                                                   value))
+                              lambda value: misc.utility.change_setting("game_settings",
+                                                                        "slot_amount",
+                                                                        value))
 
 fastSpinSetting = sk.Section(gameSettings,
                              text="Fast spin",
                              grid=True)
 
 fastSpinSlider = sk.TextSlider(fastSpinSetting,
-                               ["Off", "On"][fastSpin],
+                               ["Off", "On"][misc.fastSpin],
                                ["Off", "On"],
-                               lambda value: utility.change_setting("game_settings",
-                                                                    "fast_spin",
-                                                                    value))
+                               lambda value: misc.utility.change_setting("game_settings",
+                                                                         "fast_spin",
+                                                                         value))
 
 closeSettingsBtn = sk.Button(settingsFrame, "#404040",
-                             command=utility.hide_settings,
+                             command=misc.utility.hide_settings,
                              text="✕",
                              font="Arial 20")
 
 sym = {}  # dictionary for each slot
-for i in range(slotAmt):  # has to be in a for loop, since the user can change the amount of slots
+for i in range(misc.slotAmt):  # has to be in a for loop, since the user can change the amount of slots
     sym[i] = slot.Slot(slotCanvas, i)
-    randSym = symbols[randint(0, len(symbols) - 1)]
+    randSym = misc.symbols[randint(0, len(misc.symbols) - 1)]
     sym[i].set(sym[i].symbol,
                text=randSym,
-               fill=symData[randSym]["color"])
+               fill=misc.symData[randSym]["color"])
