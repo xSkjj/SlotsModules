@@ -185,10 +185,12 @@ class OkCancelApply(tk.Frame):
         self.apply.grid(column=2, row=0, padx=2)
 
     def _ok(self):
-        pass
+        self.master.applySettings()
+        self.master.place_forget()
 
     def _cancel(self):
+        self.master.resetSettings()
         self.master.place_forget()
 
     def _apply(self):
-        pass
+        self.master.applySettings()

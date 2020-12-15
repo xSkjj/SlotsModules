@@ -1,6 +1,6 @@
 from configparser import ConfigParser
 
-config = ConfigParser()
+config = configQ = ConfigParser()
 config.read("settings.ini")  # get window settings from settings.ini
 
 bgColor = config.get("customisation", "window_background")

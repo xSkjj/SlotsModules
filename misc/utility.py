@@ -1,22 +1,26 @@
-from misc import gui, config
+import misc
+import misc.gui
 
 
 def show_settings():
-    gui.amtInput.unbind("<Return>")
-    gui.settingsFrame.place(height=gui.root.winfo_height(), width=gui.root.winfo_width())
+    misc.gui.amtInput.unbind("<Return>")
+    misc.gui.settingsFrame.place(height=misc.gui.root.winfo_height(), width=misc.gui.root.winfo_width())
 
 
 def hide_settings():
-    gui.amtInput.bind("<Return>", gui.spin.try_spin)
-    gui.settingsFrame.place_forget()
+    misc.gui.amtInput.bind("<Return>", misc.gui.spin.try_spin)
+    misc.gui.settingsFrame.place_forget()
 
 
 def reset_settings():
-    gui.slotAmtSlider.currentSlide["text"] = str(gui.misc.slotAmt)
-    gui.fastSpinSlider.currentSlide["text"] = ["Off", "On"][gui.misc.fastSpin]
+    misc.configQ = misc.config
 
 
-def change_setting(sect, key, value):
-    config[sect][key] = value
+def q_setting(sect, key, value):
+    misc.configQ[sect][key] = value
+
+
+def apply_settings():
+    misc.config = misc.configQ
     with open("settings.ini", 'w') as settings:
-        config.write(settings)
+        misc.config.write(settings)

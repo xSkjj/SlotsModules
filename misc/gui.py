@@ -73,6 +73,8 @@ settingsFrame = sk.Section(root,  # the container for all settings
                            highlightthickness=4,
                            highlightbackground="white")
 settingsFrame.label["font"] = "Impact 48"
+settingsFrame.resetSettings = utility.reset_settings
+settingsFrame.applySettings = utility.apply_settings
 
 gameSettings = sk.Section(settingsFrame,
                           text="Game Settings")
@@ -83,9 +85,9 @@ slotAmtSetting = sk.Section(gameSettings,
 slotAmtSlider = sk.TextSlider(slotAmtSetting,
                               str(misc.slotAmt),
                               "234567",
-                              lambda value: misc.utility.change_setting("game_settings",
-                                                                        "slot_amount",
-                                                                        value))
+                              lambda value: misc.utility.q_setting("game_settings",
+                                                                   "slot_amount",
+                                                                   value))
 
 fastSpinSetting = sk.Section(gameSettings,
                              text="Fast spin",
@@ -94,9 +96,9 @@ fastSpinSetting = sk.Section(gameSettings,
 fastSpinSlider = sk.TextSlider(fastSpinSetting,
                                ["Off", "On"][misc.fastSpin],
                                ["Off", "On"],
-                               lambda value: misc.utility.change_setting("game_settings",
-                                                                         "fast_spin",
-                                                                         value))
+                               lambda value: misc.utility.q_setting("game_settings",
+                                                                    "fast_spin",
+                                                                    value))
 
 okCancelApplySettings = sk.OkCancelApply(settingsFrame)
 
