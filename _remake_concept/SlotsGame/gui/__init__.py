@@ -11,5 +11,5 @@ cnf_header = {
 }
 
 cnf_button = {
-    "font": ("Lucida Sans Typewriter", 14),
+    "font": ("Lucida Sans Typewriter", 16, "bold"),
 }
