@@ -1,5 +1,5 @@
 from random import randint
-from misc import slotAmt, fastSpin, symbols, symData, gui
+from misc import config, symbols, symData, gui
 import threading
 
 
@@ -46,7 +46,7 @@ def move_down(ids, n, delay):
 
 
 def spin_anim(ids, n, delay):
-    if fastSpin:
+    if config.fastSpin:
         delay, n = 1, 1
     for i in range(n):
         move_down(ids, 6, delay)
@@ -69,7 +69,7 @@ def spin_process():
 
     slot_ids = [gui.sym[key].symbol for key in gui.sym]  # put all slot symbol IDs in a list
 
-    for i in range(slotAmt):
+    for i in range(config.slotAmt):
         spin_anim(slot_ids[i:], 5, 10)
 
     # put each symbol in a list

@@ -12,19 +12,19 @@ root.iconbitmap(".\\assets\\icon.ico")  # set the icon in the top left of the wi
 root.title("Slots")  # set window title of the title bar
 root.resizable(False, False)  # disable resizability in x and y
 root.minsize(480, 480)  # set minimum width and height of the window
-root["bg"] = misc.bgColor  # set the background color of the window
+root["bg"] = misc.config.bgColor  # set the background color of the window
 
 # define elements and set their properties
 header = tk.Label(root,  # "SLOTS" title
                   text="$  L  O  T  $",
                   font="Impact 48",
                   fg="gold",
-                  bg=misc.bgColor)
+                  bg=misc.config.bgColor)
 
 slotCanvas = tk.Canvas(root,  # canvas in which the slots are displayed in
-                       width=misc.slotAmt * 120,
+                       width=misc.config.slotAmt * 120,
                        height=120,
-                       bg=misc.bgSlots,
+                       bg=misc.config.bgSlots,
                        highlightthickness=0)
 
 output = tk.Label(root,  # Label for various text strings to tell the user something
@@ -34,13 +34,13 @@ output = tk.Label(root,  # Label for various text strings to tell the user somet
                   bg="#101010")
 
 userInputs = tk.Frame(root,  # a set of widgets for user interaction
-                      bg=misc.bgColor)
+                      bg=misc.config.bgColor)
 
 amtInputLabel = tk.Label(userInputs,  # Label for the input field for the balance amount the user wants to use
                          text="Amount:",
                          font="Arial 16 bold",
                          fg="white",
-                         bg=misc.bgColor)
+                         bg=misc.config.bgColor)
 
 amtInput = tk.Entry(userInputs,  # an input field where the user chooses an amount
                     # this is where bugs and errors may happen
@@ -60,7 +60,7 @@ balLabel = tk.Label(root,  # the Label to display the current user balance
                     text=f"Balance: {misc.startBalance}",
                     font="Arial 16 bold",
                     fg="gold",
-                    bg=misc.bgColor)
+                    bg=misc.config.bgColor)
 
 settingsBtn = sk.Button(root, "#404040",
                         command=misc.utility.show_settings,
@@ -83,7 +83,7 @@ slotAmtSetting = sk.Section(gameSettings,
                             text="Slot amount",
                             grid=True)
 slotAmtSlider = sk.TextSlider(slotAmtSetting,
-                              str(misc.slotAmt),
+                              str(misc.config.slotAmt),
                               "234567",
                               lambda value: misc.utility.q_setting("game_settings",
                                                                    "slot_amount",
@@ -94,7 +94,7 @@ fastSpinSetting = sk.Section(gameSettings,
                              grid=True)
 
 fastSpinSlider = sk.TextSlider(fastSpinSetting,
-                               ["Off", "On"][misc.fastSpin],
+                               ["Off", "On"][misc.config.fastSpin],
                                ["Off", "On"],
                                lambda value: misc.utility.q_setting("game_settings",
                                                                     "fast_spin",
@@ -103,7 +103,7 @@ fastSpinSlider = sk.TextSlider(fastSpinSetting,
 okCancelApplySettings = sk.OkCancelApply(settingsFrame)
 
 sym = {}  # dictionary for each slot
-for i in range(misc.slotAmt):  # has to be in a for loop, since the user can change the amount of slots
+for i in range(misc.config.slotAmt):  # has to be in a for loop, since the user can change the amount of slots
     sym[i] = slot.Slot(slotCanvas, i)
     randSym = misc.symbols[randint(0, len(misc.symbols) - 1)]
     sym[i].set(sym[i].symbol,
