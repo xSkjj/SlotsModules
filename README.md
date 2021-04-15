@@ -11,6 +11,4 @@ soothe your gambling addiction without losing any real money
 - spin animations!
 - recursion!
 
-This is a school project I'm working on
-
 Inspired by t!slots from https://tatsu.gg
